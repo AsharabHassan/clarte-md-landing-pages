@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Clarté MD — Clinical Skincare Protocols</title>
+  <meta name="description" content="Dermatologist-formulated clinical skincare protocols for acne, pigmentation, anti-ageing, and barrier repair. Formulated in Lahore by Dr. Tauqir Ahmad, GMC-registered." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --white: #ffffff;
+      --canvas: #fafbfd;
+      --sky: #eef3fb;
+      --sky-2: #dee7f4;
+      --navy: #0e1f3a;
+      --navy-deep: #08152a;
+      --cobalt: #2e5ba8;
+      --cobalt-2: #4a78c7;
+      --cobalt-glow: #8ab0e0;
+      --ink: #0e1f3a;
+      --ink-mute: #4d5d7d;
+      --ink-faint: #8a98b3;
+      --rule: #dbe2ee;
+      --max-w: 1280px;
+    }
+    *,*::before,*::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 16.5px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .display, h1, h2, h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 360;
+      font-variation-settings: 'opsz' 144, 'SOFT' 30;
+      letter-spacing: -0.022em;
+      line-height: 1.02;
+      margin: 0;
+    }
+    h1 em, .h-em {
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+      color: var(--cobalt-glow);
+    }
+    .mono, .eyebrow {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+    @media (max-width: 640px) { .container { padding: 0 20px; } }
+
+    /* TOPBAR */
+    .topbar {
+      background: var(--navy-deep);
+      color: var(--cobalt-glow);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 9px 0;
+    }
+    .topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
+
+    /* NAV */
+    .nav {
+      background: var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav .container {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 18px; padding-bottom: 18px;
+    }
+    .brand {
+      font-family: 'Fraunces', serif;
+      font-weight: 350;
+      font-size: 30px;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.022em;
+      display: inline-flex; align-items: baseline; gap: 3px;
+    }
+    .brand sup {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--cobalt-glow);
+      transform: translateY(-10px);
+    }
+    .nav-wa {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--cobalt);
+      color: var(--white);
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: background .15s;
+    }
+    .nav-wa:hover { background: var(--cobalt-2); }
+    .nav-wa svg { width: 15px; height: 15px; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 96px;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 900px 600px at 50% 0%, rgba(74,120,199,0.32), transparent 60%),
+        radial-gradient(ellipse 600px 500px at 12% 90%, rgba(46,91,168,0.18), transparent 65%);
+      z-index: -2;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+    .hero .eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      color: var(--cobalt-glow);
+      margin-bottom: 28px;
+    }
+    .hero .eyebrow::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #51e09e;
+      box-shadow: 0 0 0 4px rgba(81,224,158,0.18);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(81,224,158,0.18); }
+      50% { box-shadow: 0 0 0 9px rgba(81,224,158,0.04); }
+    }
+    .hero h1 {
+      color: var(--white);
+      font-size: clamp(48px, 7.2vw, 108px);
+      line-height: 0.96;
+      max-width: 14ch;
+      margin: 0 0 28px;
+    }
+    .hero .lede {
+      font-size: 19px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.8);
+      max-width: 56ch;
+      margin: 0 0 40px;
+    }
+    .hero .lede strong { color: var(--white); font-weight: 600; }
+    .hero-meta {
+      display: flex; gap: 36px; flex-wrap: wrap;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      max-width: 800px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .hero-meta .item .k { color: var(--cobalt-glow); opacity: 0.85; margin-bottom: 5px; font-weight: 500; }
+    .hero-meta .item .v { color: var(--white); font-weight: 600; }
+
+    /* PROTOCOLS */
+    .protocols {
+      padding: 96px 0 120px;
+      background: var(--white);
+      color: var(--ink);
+    }
+    .protocols .section-head {
+      max-width: 60ch;
+      margin: 0 auto 64px;
+      text-align: center;
+    }
+    .protocols .section-head .eyebrow { color: var(--cobalt); margin-bottom: 18px; }
+    .protocols .section-head h2 {
+      font-size: clamp(40px, 5.4vw, 76px);
+      line-height: 1.0;
+      color: var(--navy);
+      margin: 0 0 18px;
+    }
+    .protocols .section-head h2 em { color: var(--cobalt); font-style: italic; }
+    .protocols .section-head p {
+      font-size: 17.5px;
+      color: var(--ink-mute);
+      line-height: 1.55;
+      max-width: 50ch;
+      margin: 0 auto;
+    }
+
+    .proto-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    @media (max-width: 880px) { .proto-grid { grid-template-columns: 1fr; } }
+
+    .proto-card {
+      position: relative;
+      background: var(--canvas);
+      border: 1px solid var(--rule);
+      border-radius: 22px;
+      padding: 40px;
+      text-decoration: none;
+      color: var(--ink);
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      min-height: 380px;
+    }
+    .proto-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--cobalt);
+      box-shadow: 0 32px 80px -28px rgba(14,31,58,0.22);
+    }
+    .proto-card::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 280px; height: 280px;
+      background: radial-gradient(closest-side, rgba(138,176,224,0.22), transparent 70%);
+      pointer-events: none;
+      transition: opacity .25s;
+    }
+    .proto-card:hover::before { opacity: 1.4; }
+
+    .proto-card .case {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      font-weight: 600;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .proto-card .case .divider { color: var(--ink-faint); }
+    .proto-card .case .concern { color: var(--ink-mute); }
+
+    .proto-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 44px;
+      color: var(--navy);
+      line-height: 1.0;
+      letter-spacing: -0.022em;
+      margin: 0 0 14px;
+    }
+    .proto-card h3 em {
+      font-style: italic;
+      color: var(--cobalt);
+      font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+    }
+    .proto-card .desc {
+      font-size: 15.5px;
+      color: var(--ink-mute);
+      line-height: 1.6;
+      margin: 0 0 28px;
+      max-width: 38ch;
+    }
+
+    .proto-card .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      padding: 20px 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 24px;
+    }
+    .proto-card .stats .stat .k {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .proto-card .stats .stat .v {
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+    .proto-card .stats .stat .v.savings { color: var(--cobalt); font-style: italic; }
+
+    .proto-card .footer-row {
+      margin-top: auto;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 14px;
+    }
+    .proto-card .footer-row .actives {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--ink-mute);
+      max-width: 36ch;
+    }
+    .proto-card .arrow {
+      width: 44px; height: 44px;
+      border: 1.5px solid var(--navy);
+      border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--navy);
+      flex-shrink: 0;
+      transition: background .2s, color .2s, transform .2s;
+    }
+    .proto-card:hover .arrow {
+      background: var(--cobalt);
+      border-color: var(--cobalt);
+      color: var(--white);
+      transform: translateX(4px);
+    }
+
+    /* COMPLETE REGIMEN CARD (spans 2 cols) */
+    .proto-card.full {
+      grid-column: span 2;
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+      min-height: auto;
+      padding: 48px;
+    }
+    @media (max-width: 880px) {
+      .proto-card.full { grid-column: span 1; grid-template-columns: 1fr; gap: 28px; padding: 32px; }
+    }
+    .proto-card.full::before {
+      background: radial-gradient(closest-side, rgba(138,176,224,0.32), transparent 70%);
+      width: 360px; height: 360px;
+    }
+    .proto-card.full h3 { color: var(--white); font-size: 40px; }
+    .proto-card.full h3 em { color: var(--cobalt-glow); }
+    .proto-card.full .case { color: var(--cobalt-glow); }
+    .proto-card.full .case .concern { color: rgba(255,255,255,0.6); }
+    .proto-card.full .desc { color: rgba(255,255,255,0.78); margin-bottom: 0; }
+    .proto-card.full .arrow { border-color: var(--white); color: var(--white); }
+    .proto-card.full:hover { transform: translateY(-4px); border-color: var(--cobalt-glow); }
+    .proto-card.full:hover .arrow { background: var(--white); color: var(--navy); border-color: var(--white); }
+    .proto-card.full .right { display: flex; justify-content: flex-end; align-items: center; gap: 24px; }
+
+    /* HOW IT WORKS */
+    .how {
+      padding: 96px 0;
+      background: var(--sky);
+      color: var(--ink);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .how .section-head { max-width: 60ch; margin: 0 auto 56px; text-align: center; }
+    .how .section-head .eyebrow { color: var(--cobalt); margin-bottom: 18px; }
+    .how .section-head h2 {
+      font-size: clamp(36px, 4.4vw, 60px);
+      color: var(--navy);
+      line-height: 1.02;
+      margin: 0;
+    }
+    .how .section-head h2 em { color: var(--cobalt); font-style: italic; }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      max-width: 1180px;
+      margin: 0 auto;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    @media (max-width: 900px) { .how-grid { grid-template-columns: 1fr; } }
+    .how-card {
+      background: var(--white);
+      padding: 40px 32px;
+      display: flex; flex-direction: column;
+      gap: 16px;
+    }
+    .how-card .num {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 84px;
+      line-height: 0.85;
+      color: var(--cobalt);
+      margin-bottom: 8px;
+      font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+    }
+    .how-card h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 26px;
+      color: var(--navy);
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin: 0 0 4px;
+      font-weight: 400;
+    }
+    .how-card p { color: var(--ink-mute); font-size: 14.5px; line-height: 1.6; margin: 0; }
+
+    /* FOOTER */
+    footer {
+      padding: 64px 0 36px;
+      background: var(--navy-deep);
+      color: rgba(255,255,255,0.6);
+    }
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    @media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr; gap: 28px; } }
+    .foot-col .brand { font-size: 32px; color: var(--white); margin-bottom: 14px; display: inline-flex; }
+    .foot-col .brand sup { color: var(--cobalt-glow); }
+    .foot-col h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cobalt-glow);
+      margin: 0 0 14px;
+      font-weight: 600;
+    }
+    .foot-col p, .foot-col a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 14.5px;
+      margin: 0 0 8px;
+      display: block;
+    }
+    .foot-col a:hover { color: var(--cobalt-glow); }
+    .foot-col .blurb {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 15px;
+      max-width: 36ch;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+    .foot-bottom {
+      display: flex; justify-content: space-between; flex-wrap: wrap;
+      gap: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--cobalt-glow);
+      outline-offset: 3px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="container">
+    <span>Clarté MD · Established Lahore · MMXXIV</span>
+    <span>Vol. I · Five Protocols · One Clinic</span>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <a href="/" class="brand">Clarté<sup>MD</sup></a>
+    <a class="nav-wa" href="https://wa.me/923249986822" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.8.8 2.5.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.4 5.3L2 22l4.8-1.3c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+      WhatsApp Dr. Ahmad
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Live · AI before-after preview on every protocol</div>
+    <h1 class="display">
+      Clinical skincare, <span class="h-em">dispensed</span> in Lahore.
+    </h1>
+    <p class="lede">
+      Four dermatologist-formulated protocols for the four concerns Pakistani skin sees most.
+      Built by <strong>Dr. Muhammad Tauqir Ahmad</strong> — GMC-registered (London) and PMDC consultants at our Lahore clinic.
+      Upload a selfie on any protocol page and see a photoreal projection of your skin after twelve weeks.
+    </p>
+    <div class="hero-meta">
+      <div class="item"><div class="k">Authority</div><div class="v">Dr. M. T. Ahmad · GMC</div></div>
+      <div class="item"><div class="k">Manufacturing</div><div class="v">ISO 22716 · Lahore</div></div>
+      <div class="item"><div class="k">Payment</div><div class="v">COD · JazzCash · Card</div></div>
+      <div class="item"><div class="k">Delivery</div><div class="v">24-hr Lahore</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROTOCOLS -->
+<section class="protocols">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Four protocols · one clinic</div>
+      <h2 class="display">Pick the concern you actually have. <em>Skip the guesswork.</em></h2>
+      <p>Each protocol is a dermatologist-curated routine — four to five products, clinically dosed actives, twelve weeks to result. All include a free WhatsApp consultation with Dr. Ahmad's team.</p>
+    </div>
+
+    <div class="proto-grid">
+
+      <!-- ACNE -->
+      <a href="/acne-protocol.html" class="proto-card">
+        <div class="case"><span>CS-001</span><span class="divider">·</span><span class="concern">Acne &amp; PIH</span></div>
+        <h3>The Clear Skin <em>Protocol</em></h3>
+        <p class="desc">A four-product clinical regimen for active breakouts, hormonal acne, and post-acne pigmentation.</p>
+        <div class="stats">
+          <div class="stat"><div class="k">Products</div><div class="v">4</div></div>
+          <div class="stat"><div class="k">Price</div><div class="v">Rs. 6,499</div></div>
+          <div class="stat"><div class="k">Save</div><div class="v savings">17%</div></div>
+        </div>
+        <div class="footer-row">
+          <div class="actives">Niacinamide 10% · Azelaic · BHA 2% · SPF 50</div>
+          <span class="arrow">
+            <svg width="18" height="10" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 5.5h20M16 1l4 4.5-4 4.5"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- PIGMENTATION -->
+      <a href="/even-tone-protocol.html" class="proto-card">
+        <div class="case"><span>CS-002</span><span class="divider">·</span><span class="concern">Melasma &amp; Dark Spots</span></div>
+        <h3>The Even Tone <em>Protocol</em></h3>
+        <p class="desc">A four-product clinical regimen for melasma, dark spots, and uneven complexion.</p>
+        <div class="stats">
+          <div class="stat"><div class="k">Products</div><div class="v">4</div></div>
+          <div class="stat"><div class="k">Price</div><div class="v">Rs. 6,999</div></div>
+          <div class="stat"><div class="k">Save</div><div class="v savings">17%</div></div>
+        </div>
+        <div class="footer-row">
+          <div class="actives">L-Ascorbic 15% · Tranexamic · Alpha-Arbutin · SPF 50</div>
+          <span class="arrow">
+            <svg width="18" height="10" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 5.5h20M16 1l4 4.5-4 4.5"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- ANTI-AGEING -->
+      <a href="/renewal-protocol.html" class="proto-card">
+        <div class="case"><span>CS-003</span><span class="divider">·</span><span class="concern">Photoageing &amp; Lines</span></div>
+        <h3>The Renewal <em>Protocol</em></h3>
+        <p class="desc">A five-product clinical regimen for fine lines, loss of firmness, and dull mature skin.</p>
+        <div class="stats">
+          <div class="stat"><div class="k">Products</div><div class="v">5</div></div>
+          <div class="stat"><div class="k">Price</div><div class="v">Rs. 7,999</div></div>
+          <div class="stat"><div class="k">Save</div><div class="v savings">20%</div></div>
+        </div>
+        <div class="footer-row">
+          <div class="actives">Retinol 0.3% · L-Ascorbic 15% · HA · ceramides · SPF 50</div>
+          <span class="arrow">
+            <svg width="18" height="10" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 5.5h20M16 1l4 4.5-4 4.5"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- BARRIER -->
+      <a href="/barrier-protocol.html" class="proto-card">
+        <div class="case"><span>CS-004</span><span class="divider">·</span><span class="concern">Sensitive &amp; Dehydrated</span></div>
+        <h3>The Barrier <em>Protocol</em></h3>
+        <p class="desc">A three-product clinical regimen for compromised, dehydrated, and reactive skin.</p>
+        <div class="stats">
+          <div class="stat"><div class="k">Products</div><div class="v">3</div></div>
+          <div class="stat"><div class="k">Price</div><div class="v">Rs. 4,799</div></div>
+          <div class="stat"><div class="k">Save</div><div class="v savings">16%</div></div>
+        </div>
+        <div class="footer-row">
+          <div class="actives">Triple-weight HA · B5 · ceramides · SPF 50</div>
+          <span class="arrow">
+            <svg width="18" height="10" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 5.5h20M16 1l4 4.5-4 4.5"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- COMPLETE REGIMEN (full-width) -->
+      <a href="/complete-regimen-checkout.html" class="proto-card full">
+        <div>
+          <div class="case"><span>CS-ALL</span><span class="divider">·</span><span class="concern">The whole catalog</span></div>
+          <h3>Build your <em>complete</em> regimen.</h3>
+          <p class="desc">All eight Clarté MD products in one place. Add what you need; tiered discounts apply automatically as you build — up to 20% off at the complete eight-product mark.</p>
+        </div>
+        <div class="right">
+          <div style="text-align: right;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--cobalt-glow); text-transform: uppercase; margin-bottom: 6px;">Up to</div>
+            <div style="font-family: 'Fraunces', serif; font-size: 56px; letter-spacing: -0.022em; line-height: 1;">−20%</div>
+            <div style="font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: var(--cobalt-glow); margin-top: 8px;">on the complete eight-product regimen</div>
+          </div>
+          <span class="arrow">
+            <svg width="18" height="10" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 5.5h20M16 1l4 4.5-4 4.5"/></svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">How it works</div>
+      <h2 class="display">Selfie. <em>Projection.</em> Protocol.</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="num">I.</div>
+        <h4>Pick your concern</h4>
+        <p>Choose the protocol that matches your skin — acne, pigmentation, anti-ageing, or barrier repair. Not sure? WhatsApp Dr. Ahmad's team for a free recommendation.</p>
+      </div>
+      <div class="how-card">
+        <div class="num">II.</div>
+        <h4>Upload one selfie</h4>
+        <p>Front-facing, even lighting, no filters. Our AI projects a photoreal preview of your skin after the full twelve-week protocol. Free. Twenty seconds. No card.</p>
+      </div>
+      <div class="how-card">
+        <div class="num">III.</div>
+        <h4>Order the protocol</h4>
+        <p>Cash on delivery, JazzCash, card, or bank transfer. Lahore arrives next-day; rest of Pakistan in two to four days via TCS. Dr. Ahmad's team WhatsApps to confirm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="/" class="brand">Clarté<sup>MD</sup></a>
+        <p class="blurb">Dermatologist-formulated clinical skincare. Made in Pakistan at an ISO 22716-certified facility. Delivered to your door — no grey market, no guesswork.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Protocols</h4>
+        <a href="/acne-protocol.html">Clear Skin · Acne</a>
+        <a href="/even-tone-protocol.html">Even Tone · Pigmentation</a>
+        <a href="/renewal-protocol.html">Renewal · Anti-ageing</a>
+        <a href="/barrier-protocol.html">Barrier · Hydration</a>
+        <a href="/complete-regimen-checkout.html">Complete regimen</a>
+      </div>
+      <div class="foot-col">
+        <h4>Counsel</h4>
+        <a href="https://wa.me/923249986822">WhatsApp Support</a>
+        <a href="tel:+923249986822">+92 324 9986822</a>
+        <a href="#">Shipping &amp; Returns</a>
+        <a href="#">Authenticity Guarantee</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© MMXXVI · Clarté MD · Lahore, Pakistan</span>
+      <span>Free shipping over Rs. 4,000 &nbsp;·&nbsp; COD &nbsp;·&nbsp; 2× refund if fake</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

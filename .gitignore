@@ -1,0 +1,18 @@
+# Vercel
+.vercel/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Tool-local state
+.claude/
+.playwright-mcp/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db

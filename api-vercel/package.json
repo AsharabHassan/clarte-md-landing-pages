@@ -1,0 +1,9 @@
+{
+  "name": "clarte-md-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vercel Edge proxy for Clarte MD's Nano Banana 2 (Gemini 2.5 Flash Image) AI before/after generator.",
+  "engines": {
+    "node": ">=20"
+  }
+}

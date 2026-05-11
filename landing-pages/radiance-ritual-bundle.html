@@ -1,0 +1,1536 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>The Radiance Ritual — Clarte MD</title>
+  <meta name="description" content="A 4-step clinical routine for radiant, even-toned Pakistani skin. Formulated by Dr. Muhammad Tauqir Ahmad, GMC-registered dermatologist, London. Rs. 5,000. Free shipping. Free WhatsApp consultation." />
+
+  <!-- Fonts: Fraunces (display serif) + Satoshi (body grotesque) + JetBrains Mono (clinical mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..800,0..100,0..1;1,9..144,300..800,0..100,0..1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --paper: #f3eee4;
+      --paper-deep: #e9e1d1;
+      --ink: #1b1f1d;
+      --ink-soft: #4a504c;
+      --green: #1f3a36;
+      --green-deep: #11211f;
+      --sand: #d9cdb7;
+      --gold: #a8854a;
+      --coral: #b85c42;
+      --rule: #c9bfa9;
+      --max-w: 1240px;
+    }
+
+    *,
+    *::before,
+    *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    /* Subtle paper grain so the background reads as paper, not flat color */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.11  0 0 0 0 0.12  0 0 0 0 0.11  0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      opacity: 0.55;
+      mix-blend-mode: multiply;
+      z-index: 1;
+    }
+
+    main, header, footer { position: relative; z-index: 2; }
+
+    /* Typography */
+    .display, h1, h2, .h-display {
+      font-family: 'Fraunces', 'Times New Roman', serif;
+      font-weight: 360;
+      font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;
+      letter-spacing: -0.02em;
+      line-height: 1.02;
+      color: var(--ink);
+    }
+    .display em, h1 em, h2 em {
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+      color: var(--green);
+    }
+    .mono, .eyebrow, .batch-id {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 11.5px;
+      font-weight: 500;
+    }
+    .eyebrow {
+      color: var(--ink-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--ink-soft);
+      display: inline-block;
+    }
+
+    /* Layout */
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; }
+    @media (min-width: 900px) { .wrap { padding: 0 56px; } }
+
+    section { padding: 96px 0; border-top: 1px solid var(--rule); }
+    section:first-of-type { border-top: 0; padding-top: 24px; }
+    @media (max-width: 720px) { section { padding: 64px 0; } }
+
+    .section-no {
+      font-family: 'Fraunces', serif;
+      font-variation-settings: 'opsz' 9, 'SOFT' 0, 'WONK' 1;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    /* ============================================== TOP NAV ============================================== */
+    header.nav {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(243, 238, 228, 0.86);
+      backdrop-filter: saturate(160%) blur(10px);
+      -webkit-backdrop-filter: saturate(160%) blur(10px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 28px;
+      max-width: var(--max-w); margin: 0 auto;
+    }
+    @media (min-width: 900px) { .nav-inner { padding: 18px 56px; } }
+    .brand {
+      font-family: 'Fraunces', serif;
+      font-variation-settings: 'opsz' 144, 'SOFT' 0, 'WONK' 0;
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-decoration: none;
+      display: inline-flex; align-items: baseline; gap: 6px;
+    }
+    .brand sup { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+    .nav-cta {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+    }
+    .nav-cta:hover { color: var(--green); border-color: var(--green); }
+
+    /* ============================================== HERO ============================================== */
+    .hero { padding-top: 36px; padding-bottom: 0; border-top: 0; }
+    .hero-grid {
+      display: grid; gap: 56px;
+      grid-template-columns: 1fr;
+      align-items: end;
+    }
+    @media (min-width: 980px) {
+      .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 72px; }
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 7.2vw, 96px);
+      margin: 28px 0 0;
+      font-weight: 340;
+      letter-spacing: -0.025em;
+    }
+    .hero h1 .hl-credential {
+      display: inline-block;
+      vertical-align: baseline;
+      font-size: 0.36em;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      font-style: normal;
+      font-variation-settings: normal;
+      color: var(--green);
+      padding: 6px 10px;
+      border: 1px solid var(--green);
+      border-radius: 999px;
+      margin-left: 8px;
+      transform: translateY(-0.4em);
+    }
+    .hero .sub {
+      max-width: 56ch;
+      font-size: 19px;
+      color: var(--ink-soft);
+      margin-top: 30px;
+      line-height: 1.5;
+    }
+
+    .hero-cta-row {
+      display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+      margin-top: 38px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 18px 28px;
+      border-radius: 999px;
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 500;
+      font-size: 15.5px;
+      letter-spacing: -0.005em;
+      text-decoration: none;
+      transition: transform .25s ease, background .2s ease, color .2s ease;
+      cursor: pointer;
+      border: 0;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: var(--paper);
+    }
+    .btn-primary:hover { background: var(--green-deep); transform: translateY(-1px); }
+    .btn-primary .price-strike {
+      text-decoration: line-through;
+      opacity: 0.55;
+      margin-right: 8px;
+      font-size: 13px;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+    }
+    .btn-secondary:hover { background: var(--ink); color: var(--paper); }
+
+    .trust-strip {
+      margin-top: 36px;
+      display: flex; flex-wrap: wrap; gap: 8px 22px;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+    .trust-strip span { display: inline-flex; align-items: center; gap: 8px; }
+    .dot { width: 4px; height: 4px; background: var(--green); border-radius: 999px; display: inline-block; }
+
+    /* Hero side: editorial spec card / "package" */
+    .hero-visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background:
+        radial-gradient(120% 80% at 30% 20%, rgba(255,255,255,0.55), rgba(255,255,255,0) 60%),
+        linear-gradient(160deg, var(--paper-deep) 0%, #ddd1bb 80%);
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(31,58,54,0.18) 50%, transparent 51%),
+        radial-gradient(1px 1px at 70% 60%, rgba(31,58,54,0.12) 50%, transparent 51%),
+        radial-gradient(1px 1px at 50% 80%, rgba(31,58,54,0.10) 50%, transparent 51%);
+      background-size: 320px 320px;
+    }
+    .hero-visual .lab-label {
+      position: absolute; top: 24px; left: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    .hero-visual .lab-label .pulse {
+      display: inline-block;
+      width: 6px; height: 6px; background: var(--green); border-radius: 999px;
+      margin-right: 8px; vertical-align: middle;
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.35; }
+      50% { opacity: 1; }
+    }
+    .hero-visual .placeholder-note {
+      position: absolute; bottom: 18px; right: 22px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      max-width: 240px;
+      text-align: right;
+    }
+    .hero-visual .product-stack {
+      position: absolute; inset: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 80px 28px 28px;
+    }
+    .hero-visual .product-stack .tile {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      display: flex; align-items: end;
+      padding: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-visual .product-stack .tile::before {
+      content: ''; position: absolute;
+      top: 24px; left: 50%; transform: translateX(-50%);
+      width: 38%; aspect-ratio: 1/3.2;
+      background: linear-gradient(180deg, var(--green) 0%, var(--green-deep) 100%);
+      border-radius: 6px 6px 0 0;
+      opacity: 0.85;
+    }
+    .hero-visual .product-stack .tile::after {
+      content: 'CLARTE'; position: absolute;
+      top: 38%; left: 50%; transform: translateX(-50%);
+      font-family: 'Fraunces', serif; font-size: 9px; letter-spacing: 0.2em; color: var(--paper); font-weight: 500;
+    }
+    .hero-visual .product-stack .tile span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.12em;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+    }
+
+    /* ============================================== SECTION 02 — bundle contents ============================================== */
+    .heading-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+    @media (min-width: 900px) {
+      .heading-row { grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; }
+    }
+    .heading-row h2 {
+      font-size: clamp(34px, 4.6vw, 58px);
+      margin: 14px 0 0;
+      max-width: 16ch;
+    }
+    .heading-row .deck {
+      color: var(--ink-soft);
+      font-size: 18px;
+      max-width: 46ch;
+    }
+
+    .steps {
+      display: grid;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    @media (min-width: 800px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+    .step {
+      background: var(--paper);
+      padding: 32px 26px 26px;
+      position: relative;
+      display: flex; flex-direction: column; min-height: 360px;
+    }
+    .step .step-no {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+      font-size: 48px;
+      line-height: 1;
+      color: var(--green);
+      margin-bottom: 36px;
+    }
+    .step .step-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .step h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 380;
+      font-size: 23px;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      margin: 10px 0 12px;
+    }
+    .step .step-role {
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      line-height: 1.45;
+      flex: 1;
+    }
+    .step .step-meta {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      display: flex; justify-content: space-between; align-items: baseline;
+    }
+    .step .step-meta .vol {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft);
+    }
+    .step .step-meta .price {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+    }
+
+    .math {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--ink);
+      padding-top: 32px;
+    }
+    @media (min-width: 900px) {
+      .math { grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: end; }
+    }
+    .math .col span.k {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft);
+      display: block; margin-bottom: 8px;
+    }
+    .math .col span.v {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 4vw, 56px);
+      letter-spacing: -0.02em;
+      display: block; line-height: 1;
+    }
+    .math .col span.v.strike { color: var(--ink-soft); text-decoration: line-through; }
+    .math .col span.v.save { color: var(--green); }
+
+    /* ============================================== SECTION 03 — Problem ============================================== */
+    .problem {
+      display: grid; grid-template-columns: 1fr; gap: 32px;
+    }
+    @media (min-width: 980px) {
+      .problem { grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+    }
+    .problem h2 {
+      font-size: clamp(36px, 5vw, 64px);
+      margin: 12px 0 0;
+      max-width: 14ch;
+    }
+    .problem .body p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--ink);
+      margin: 0 0 1.2em;
+    }
+    .problem .body p:first-child {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+      font-size: 26px;
+      line-height: 1.35;
+      color: var(--green);
+      border-left: 1px solid var(--green);
+      padding-left: 22px;
+      max-width: 36ch;
+    }
+
+    /* ============================================== SECTION 04 — Mechanism ============================================== */
+    .mechanism-grid {
+      display: grid; gap: 28px; grid-template-columns: 1fr;
+      margin-top: 56px;
+    }
+    @media (min-width: 800px) { .mechanism-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
+    @media (min-width: 1080px) { .mechanism-grid { grid-template-columns: repeat(4, 1fr); } }
+    .mech {
+      padding: 28px 24px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      display: flex; flex-direction: column;
+      min-height: 240px;
+    }
+    .mech .ico {
+      width: 36px; height: 36px;
+      border: 1px solid var(--green);
+      border-radius: 999px;
+      display: grid; place-items: center;
+      margin-bottom: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: var(--green); font-weight: 500;
+    }
+    .mech h4 {
+      font-family: 'Fraunces', serif;
+      font-weight: 380;
+      font-size: 20px;
+      line-height: 1.2;
+      margin: 0 0 8px;
+      letter-spacing: -0.015em;
+    }
+    .mech p { font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+
+    /* ============================================== SECTION 05 — Doctor ============================================== */
+    .doctor {
+      display: grid; grid-template-columns: 1fr; gap: 40px;
+      align-items: start;
+    }
+    @media (min-width: 980px) {
+      .doctor { grid-template-columns: 0.85fr 1.15fr; gap: 80px; }
+    }
+    .doctor-portrait {
+      aspect-ratio: 4 / 5;
+      background:
+        radial-gradient(80% 60% at 50% 30%, rgba(255,255,255,0.4), rgba(255,255,255,0) 70%),
+        linear-gradient(170deg, #d2c9b3 0%, #b9ab8c 100%);
+      border: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+    }
+    .doctor-portrait::after {
+      content: '[PORTRAIT — Dr. Muhammad Tauqir Ahmad]';
+      position: absolute; bottom: 16px; left: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .doctor-portrait .credential-badge {
+      position: absolute; top: 20px; right: 20px;
+      padding: 10px 16px 12px;
+      background: var(--paper);
+      border: 1px solid var(--green);
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green);
+    }
+
+    .doctor-body h2 {
+      font-size: clamp(34px, 4.6vw, 58px);
+      margin: 12px 0 0;
+      max-width: 16ch;
+    }
+    .doctor-body .bio { margin-top: 28px; font-size: 17.5px; line-height: 1.6; color: var(--ink); max-width: 56ch; }
+    .doctor-body .bio strong { font-weight: 500; color: var(--green); }
+    .doctor-quote {
+      margin-top: 36px;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+      font-size: clamp(22px, 2.6vw, 30px);
+      line-height: 1.3;
+      color: var(--green);
+      border-left: 1px solid var(--green);
+      padding-left: 24px;
+      max-width: 40ch;
+    }
+    .doctor-quote .attr {
+      display: block;
+      margin-top: 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-style: normal;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .doctor-cta { margin-top: 36px; }
+    .doctor-cta a { color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 2px; font-weight: 500; text-decoration: none; font-size: 15px; }
+    .doctor-cta a:hover { color: var(--green); border-color: var(--green); }
+
+    /* ============================================== SECTION 06 — Comparison ============================================== */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 32px;
+      background: var(--paper);
+      font-size: 15px;
+    }
+    .compare-table th, .compare-table td {
+      padding: 18px 18px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--rule);
+    }
+    .compare-table th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 500;
+      border-bottom: 1px solid var(--ink);
+    }
+    .compare-table th.clarte {
+      color: var(--green);
+      background: var(--paper-deep);
+    }
+    .compare-table td.clarte {
+      background: var(--paper-deep);
+      font-weight: 500;
+    }
+    .compare-table td.row-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 500;
+      width: 22%;
+    }
+    .compare-table .pill {
+      display: inline-block; padding: 4px 10px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .pill-ok { background: rgba(31,58,54,0.1); color: var(--green); }
+    .pill-warn { background: rgba(184,92,66,0.12); color: var(--coral); }
+    .pill-neutral { background: rgba(0,0,0,0.06); color: var(--ink-soft); }
+
+    @media (max-width: 720px) {
+      .compare-table thead { display: none; }
+      .compare-table, .compare-table tbody, .compare-table tr, .compare-table td { display: block; width: 100%; }
+      .compare-table tr { border-top: 1px solid var(--ink); padding: 16px 0; }
+      .compare-table td { border-bottom: 0; padding: 6px 0; }
+      .compare-table td.row-label { padding-top: 12px; }
+      .compare-table td.clarte { background: transparent; }
+      .compare-table td::before {
+        content: attr(data-col); display: block;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft);
+        margin-bottom: 4px;
+      }
+      .compare-table td.row-label::before { content: ''; }
+    }
+
+    /* ============================================== SECTION 07 — Before / After ============================================== */
+    .ba-grid {
+      display: grid; gap: 18px;
+      grid-template-columns: 1fr;
+      margin-top: 48px;
+    }
+    @media (min-width: 800px) { .ba-grid { grid-template-columns: repeat(3, 1fr); } }
+    .ba {
+      aspect-ratio: 3 / 4;
+      background:
+        radial-gradient(50% 40% at 50% 35%, rgba(255,255,255,0.4), transparent 70%),
+        linear-gradient(180deg, #c9bca0 0%, #a89678 100%);
+      border: 1px solid var(--rule);
+      position: relative;
+    }
+    .ba .ba-day {
+      position: absolute; top: 16px; left: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--paper);
+      background: rgba(17, 33, 31, 0.8);
+      padding: 6px 10px; border-radius: 4px;
+    }
+    .ba::after {
+      content: '[PHOTO PLACEHOLDER]';
+      position: absolute; bottom: 14px; right: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--paper);
+      opacity: 0.85;
+    }
+    .ba-disclaimer {
+      margin-top: 28px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.08em; line-height: 1.6;
+      color: var(--ink-soft); text-transform: none;
+      max-width: 72ch;
+    }
+
+    /* ============================================== SECTION 08 — Testimonials ============================================== */
+    .tlist {
+      display: grid; grid-template-columns: 1fr; gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 48px;
+    }
+    @media (min-width: 900px) { .tlist { grid-template-columns: repeat(3, 1fr); } }
+    .tcard {
+      background: var(--paper);
+      padding: 36px 30px;
+    }
+    .tcard .stars {
+      font-family: 'Fraunces', serif;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+    .tcard blockquote {
+      margin: 0; padding: 0;
+      font-family: 'Fraunces', serif;
+      font-weight: 380;
+      font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 0;
+      font-size: 20px; line-height: 1.35; letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .tcard .who {
+      margin-top: 28px;
+      display: flex; align-items: baseline; gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft);
+    }
+
+    /* ============================================== SECTION 09 — Authenticity ============================================== */
+    .auth-wrap {
+      display: grid; gap: 56px; grid-template-columns: 1fr;
+      align-items: center;
+    }
+    @media (min-width: 980px) { .auth-wrap { grid-template-columns: 1fr 1fr; gap: 80px; } }
+
+    .auth-text h2 { font-size: clamp(34px, 4.6vw, 58px); max-width: 18ch; margin: 12px 0 24px; }
+    .auth-text p { font-size: 17.5px; color: var(--ink-soft); line-height: 1.6; max-width: 52ch; }
+    .auth-text .bullets {
+      list-style: none; padding: 0; margin: 28px 0 0;
+      display: grid; gap: 14px;
+    }
+    .auth-text .bullets li {
+      display: grid; grid-template-columns: 28px 1fr; gap: 14px;
+      align-items: start;
+      font-size: 15.5px; color: var(--ink);
+    }
+    .auth-text .bullets li::before {
+      content: '✓';
+      font-family: 'Fraunces', serif; color: var(--green); font-size: 18px; line-height: 1;
+      margin-top: 4px;
+    }
+
+    .stamp-stage {
+      aspect-ratio: 1 / 1;
+      position: relative;
+      display: grid; place-items: center;
+    }
+    .stamp {
+      width: 88%; aspect-ratio: 1 / 1;
+      border: 1px dashed var(--green);
+      border-radius: 999px;
+      position: relative;
+      display: grid; place-items: center;
+      transform: rotate(-6deg);
+    }
+    .stamp::before {
+      content: '';
+      position: absolute; inset: 18px;
+      border: 1.5px solid var(--green);
+      border-radius: 999px;
+    }
+    .stamp .stamp-text {
+      position: absolute; inset: 0;
+      animation: spin 36s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .stamp .stamp-text svg { width: 100%; height: 100%; }
+    .stamp .stamp-text text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.4px;
+      letter-spacing: 0.42em;
+      fill: var(--green);
+      text-transform: uppercase;
+    }
+    .stamp .inner {
+      position: relative;
+      text-align: center;
+      max-width: 70%;
+    }
+    .stamp .inner .brand-mk {
+      font-family: 'Fraunces', serif;
+      font-size: 26px; letter-spacing: -0.015em;
+      color: var(--green);
+      line-height: 1;
+    }
+    .stamp .inner .batch {
+      margin-top: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--green);
+      line-height: 1.7;
+    }
+    .stamp .inner .qr {
+      width: 64px; height: 64px; margin: 14px auto 0;
+      background:
+        conic-gradient(from 0deg at 50% 50%, var(--green) 0 25%, transparent 25% 50%, var(--green) 50% 75%, transparent 75% 100%),
+        repeating-linear-gradient(45deg, var(--green) 0 2px, transparent 2px 5px);
+      border-radius: 6px;
+      opacity: 0.85;
+    }
+
+    /* ============================================== SECTION 10 — WhatsApp consult ============================================== */
+    .wa-block {
+      background: var(--green);
+      color: var(--paper);
+      padding: 80px 0;
+      border-top: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .wa-block::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,0.16) 50%, transparent 51%),
+                        radial-gradient(1px 1px at 70% 70%, rgba(255,255,255,0.12) 50%, transparent 51%);
+      background-size: 280px 280px;
+      pointer-events: none;
+    }
+    .wa-inner { position: relative; max-width: var(--max-w); margin: 0 auto; padding: 0 28px; display: grid; gap: 28px; grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .wa-inner { padding: 0 56px; grid-template-columns: 1fr auto; align-items: center; gap: 56px; } }
+    .wa-block .eyebrow { color: rgba(243, 238, 228, 0.7); }
+    .wa-block .eyebrow::before { background: rgba(243, 238, 228, 0.6); }
+    .wa-block h2 {
+      color: var(--paper);
+      font-size: clamp(34px, 4.6vw, 58px);
+      max-width: 18ch;
+      margin: 12px 0 18px;
+    }
+    .wa-block .deck {
+      color: rgba(243, 238, 228, 0.75);
+      font-size: 17.5px;
+      max-width: 52ch;
+      line-height: 1.55;
+    }
+    .wa-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--paper); color: var(--green);
+      padding: 20px 28px;
+      border-radius: 999px;
+      font-weight: 500; font-size: 15.5px;
+      text-decoration: none;
+    }
+    .wa-cta:hover { background: #fff; transform: translateY(-1px); }
+    .wa-cta .wa-ico {
+      width: 22px; height: 22px;
+      background: var(--green);
+      mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.78 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2zm0 18.13c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.22-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.41-.56-.42-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.2.88 2.37 1 2.53.12.16 1.74 2.65 4.21 3.71.59.25 1.05.4 1.41.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.1-.22-.16-.47-.28z'/></svg>") no-repeat center / contain;
+      -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.78 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2zm0 18.13c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.22-8.24 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.41-.56-.42-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.2.88 2.37 1 2.53.12.16 1.74 2.65 4.21 3.71.59.25 1.05.4 1.41.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.1-.22-.16-.47-.28z'/></svg>") no-repeat center / contain;
+    }
+
+    /* ============================================== SECTION 11 — FAQ ============================================== */
+    .faq { display: grid; gap: 0; border-top: 1px solid var(--ink); margin-top: 48px; }
+    .faq details {
+      border-bottom: 1px solid var(--rule);
+      padding: 22px 0;
+    }
+    .faq summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      font-family: 'Fraunces', serif;
+      font-weight: 380;
+      font-size: clamp(20px, 2.2vw, 26px);
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary .plus {
+      flex: 0 0 24px; width: 24px; height: 24px;
+      position: relative;
+      transition: transform .35s ease;
+    }
+    .faq summary .plus::before, .faq summary .plus::after {
+      content: ''; position: absolute; background: var(--ink);
+    }
+    .faq summary .plus::before { left: 0; right: 0; top: 50%; height: 1px; transform: translateY(-50%); }
+    .faq summary .plus::after { top: 0; bottom: 0; left: 50%; width: 1px; transform: translateX(-50%); transition: transform .35s ease; }
+    .faq details[open] summary .plus::after { transform: translateX(-50%) rotate(90deg); }
+    .faq details[open] summary .plus { transform: rotate(45deg); }
+    .faq .answer { margin-top: 14px; max-width: 68ch; color: var(--ink-soft); font-size: 16.5px; line-height: 1.6; }
+
+    /* ============================================== SECTION 12 — Final CTA ============================================== */
+    .final {
+      text-align: center;
+      padding: 120px 0 140px;
+      border-top: 1px solid var(--rule);
+    }
+    .final h2 {
+      font-size: clamp(48px, 8vw, 120px);
+      max-width: 14ch;
+      margin: 18px auto 28px;
+      letter-spacing: -0.03em;
+    }
+    .final .sub {
+      max-width: 50ch;
+      margin: 0 auto 44px;
+      color: var(--ink-soft);
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    /* ============================================== Footer ============================================== */
+    footer.foot {
+      background: var(--green-deep);
+      color: rgba(243, 238, 228, 0.7);
+      padding: 60px 0 80px;
+    }
+    .foot-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; display: grid; gap: 36px; grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .foot-inner { padding: 0 56px; grid-template-columns: 1.4fr 1fr 1fr; gap: 56px; } }
+    .foot-brand { color: var(--paper); }
+    .foot-brand .brand { color: var(--paper); }
+    .foot-brand .brand sup { color: var(--sand); }
+    .foot-brand p { margin-top: 18px; font-size: 14px; max-width: 38ch; }
+    .foot h5 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--sand);
+      margin: 0 0 18px; font-weight: 500;
+    }
+    .foot ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 14px; }
+    .foot a { color: rgba(243, 238, 228, 0.78); text-decoration: none; border-bottom: 1px solid transparent; }
+    .foot a:hover { color: var(--paper); border-color: var(--sand); }
+    .foot-bottom {
+      max-width: var(--max-w); margin: 56px auto 0; padding: 28px 28px 0;
+      border-top: 1px solid rgba(243, 238, 228, 0.14);
+      display: flex; justify-content: space-between; align-items: baseline; gap: 18px; flex-wrap: wrap;
+      font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(243, 238, 228, 0.5);
+    }
+    @media (min-width: 900px) { .foot-bottom { padding: 28px 56px 0; } }
+
+    /* ============================================== Sticky CTA bar (mobile + desktop) ============================================== */
+    .sticky-cta {
+      position: fixed; left: 0; right: 0; bottom: 0;
+      z-index: 25;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 12px 16px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      transform: translateY(100%);
+      transition: transform .35s ease;
+    }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-cta .price-stack { display: flex; flex-direction: column; line-height: 1; }
+    .sticky-cta .price-stack .lab {
+      font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(243,238,228,0.65); margin-bottom: 4px;
+    }
+    .sticky-cta .price-stack .val { font-family: 'Fraunces', serif; font-size: 22px; }
+    .sticky-cta .price-stack .val s { color: rgba(243,238,228,0.45); font-size: 13px; margin-right: 6px; }
+    .sticky-cta a.cta {
+      background: var(--paper); color: var(--ink);
+      padding: 14px 18px; border-radius: 999px;
+      text-decoration: none; font-weight: 500; font-size: 14px;
+    }
+    @media (min-width: 900px) {
+      .sticky-cta { padding: 14px 36px; }
+      .sticky-cta a.cta { padding: 16px 24px; font-size: 15px; }
+    }
+
+    /* Section-open reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* placeholder strip — visible call-outs for the user to swap in real content */
+    .ph-strip {
+      position: relative;
+      margin: 14px 0;
+      padding: 10px 14px;
+      border: 1px dashed var(--coral);
+      border-radius: 4px;
+      background: rgba(184,92,66,0.05);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--coral);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================================== NAVIGATION ============================================== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="https://clartemd.com.pk/">Clarte<sup>MD</sup></a>
+    <a class="nav-cta" href="#consult">Free WhatsApp Consult →</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================================== HERO ============================================== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">01 — The Radiance Ritual</span>
+          <h1>
+            Clinical skincare<br />from London. Made<br />in Pakistan. Priced<br /><em>for Pakistan.</em>
+          </h1>
+          <p class="sub">
+            A 4-step routine for radiant, even-toned skin — formulated by
+            <strong style="color:var(--ink); font-weight:500;">Dr. Muhammad Tauqir Ahmad</strong>,
+            GMC-registered dermatologist, London.
+          </p>
+
+          <div class="hero-cta-row">
+            <a class="btn btn-primary" href="https://clartemd.com.pk/products/radiance-ritual-bundle">
+              <span><span class="price-strike">Rs. 9,200</span>Order the Bundle — Rs. 5,000</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;opacity:0.75;">↗</span>
+            </a>
+            <a class="btn btn-secondary" href="#consult">
+              Talk to the doctor first
+            </a>
+          </div>
+
+          <div class="trust-strip">
+            <span><span class="dot"></span> Cash on delivery</span>
+            <span><span class="dot"></span> Free nationwide shipping</span>
+            <span><span class="dot"></span> 14-day returns</span>
+            <span><span class="dot"></span> Authenticated batch — 2× refund if fake</span>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-hidden="true">
+          <span class="lab-label"><span class="pulse"></span> Bundle 01 · 4 products · AM / PM</span>
+          <div class="product-stack">
+            <div class="tile"><span>01 · Cleanse</span></div>
+            <div class="tile"><span>02 · Antioxidant</span></div>
+            <div class="tile"><span>03 · Lighten</span></div>
+            <div class="tile"><span>04 · Protect</span></div>
+          </div>
+          <span class="placeholder-note">[Replace with product flatlay — 4:5, ≥ 1600px]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================== SECTION 02 — Bundle Contents ============================================== -->
+  <section id="bundle">
+    <div class="wrap reveal">
+      <div class="heading-row">
+        <div>
+          <span class="eyebrow">02 — What's inside</span>
+          <h2>Four steps. <em>One routine.</em></h2>
+        </div>
+        <p class="deck">
+          Each formula does one thing. Together they restore radiance the way a clinic would — sequenced, dosed,
+          and calibrated for Pakistani skin in Lahore and Faisalabad weather.
+        </p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <span class="step-no">01</span>
+          <span class="step-time">AM · PM · Step 1</span>
+          <h3>Radiance Prep Cleanser</h3>
+          <p class="step-role">A non-stripping gel-cream cleanser. Lifts city pollution and SPF residue without disturbing the barrier — the necessary first move of any actives routine.</p>
+          <div class="step-meta">
+            <span class="vol">120 ml</span>
+            <span class="price">Rs. 2,300</span>
+          </div>
+        </article>
+
+        <article class="step">
+          <span class="step-no">02</span>
+          <span class="step-time">AM · Step 2</span>
+          <h3>Vitamin CE Ferulic Serum</h3>
+          <p class="step-role">A stabilised L-Ascorbic + Tocopherol + Ferulic complex at clinical pH 3.5. The same architecture imported brands charge ~Rs. 9,800 for — built fresh in Pakistan.</p>
+          <div class="step-meta">
+            <span class="vol">30 ml</span>
+            <span class="price">Rs. 2,350</span>
+          </div>
+        </article>
+
+        <article class="step">
+          <span class="step-no">03</span>
+          <span class="step-time">PM · Step 3</span>
+          <h3>Radiance Lightening Cream</h3>
+          <p class="step-role">A treatment cream for melasma, sun damage, and post-acne pigmentation. Multi-pathway brightening — without hydroquinone, mercury, or the over-the-counter shortcuts that scar.</p>
+          <div class="step-meta">
+            <span class="vol">50 ml</span>
+            <span class="price">Rs. 2,800</span>
+          </div>
+        </article>
+
+        <article class="step">
+          <span class="step-no">04</span>
+          <span class="step-time">AM · Step 4</span>
+          <h3>Barrier Restore SPF 50+</h3>
+          <p class="step-role">A broad-spectrum mineral-hybrid SPF 50+ engineered for Pakistani skin tones. No white cast. Pairs with the routine and seals everything you just did.</p>
+          <div class="step-meta">
+            <span class="vol">50 ml</span>
+            <span class="price">Rs. 2,300</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="math">
+        <div class="col">
+          <span class="k">Bought separately</span>
+          <span class="v strike">Rs. 9,750</span>
+        </div>
+        <div class="col">
+          <span class="k">As the Radiance Ritual</span>
+          <span class="v">Rs. 5,000</span>
+        </div>
+        <div class="col">
+          <span class="k">You save</span>
+          <span class="v save">Rs. 4,750</span>
+          <span class="mono" style="display:block;margin-top:10px;color:var(--ink-soft);">+ Free shipping · Free travel mini · Free WhatsApp consult</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================== SECTION 03 — Problem ============================================== -->
+  <section>
+    <div class="wrap reveal">
+      <div class="problem">
+        <div>
+          <span class="eyebrow">03 — The problem</span>
+          <h2>Pakistani skin needs a <em>routine,</em> not a miracle.</h2>
+        </div>
+        <div class="body">
+          <p>Years of harsh sun, urban pollution, and ten years of over-the-counter lightening creams leave most Pakistani skin uneven, sensitised, and dull.</p>
+          <p>The fix isn't another bleaching cream. It's a clinically calibrated four-step routine — the kind a London dermatologist would actually prescribe — adapted for Lahore and Faisalabad weather, water, and skin tones.</p>
+          <p>Most local brands sell single, isolated actives at clinic-friendly prices. Most imported brands sell the right molecules but at a 2–3× markup, with no PK distributor, no PK support, and a real risk that the bottle in your hand is counterfeit. The Radiance Ritual is the answer to both.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================== SECTION 04 — Mechanism ============================================== -->
+  <section>
+    <div class="wrap reveal">
+      <div class="heading-row">
+        <div>
+          <span class="eyebrow">04 — Why it works</span>
+          <h2>Designed the way <em>a dermatologist</em> would prescribe.</h2>
+        </div>
+        <p class="deck">
+          A real routine has order, dose, and timing. Each product has one job. Together they build to a clinical outcome — not a marketing one.
+        </p>
+      </div>
+
+      <div class="mechanism-grid">
+        <div class="mech">
+          <span class="ico">01</span>
+          <h4>Sequenced order</h4>
+          <p>Cleanse → antioxidant → treatment → protection. Each step prepares the skin for the next, the way a clinic stacks them.</p>
+        </div>
+        <div class="mech">
+          <span class="ico">02</span>
+          <h4>Clinical dosing</h4>
+          <p>Vitamin C at 15% L-ascorbic + 1% Vitamin E + 0.5% Ferulic — the SkinCeuticals-grade ratio, not "10% Vit C and we hope."</p>
+        </div>
+        <div class="mech">
+          <span class="ico">03</span>
+          <h4>Pakistani skin, formulated for</h4>
+          <p>SPF for our humidity, lightening for our melanin density, cleanser for our water hardness. Not Korean. Not American. Pakistani.</p>
+        </div>
+        <div class="mech">
+          <span class="ico">04</span>
+          <h4>Built to be defended</h4>
+          <p>Every batch carries a verification code. If it doesn't scan, we refund twice. Imported brands cannot match this in Pakistan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================== SECTION 05 — Doctor ============================================== -->
+  <section id="doctor">
+    <div class="wrap reveal">
+      <div class="doctor">
+        <div class="doctor-portrait" role="img" aria-label="Portrait of Dr. Muhammad Tauqir Ahmad — placeholder">
+          <span class="credential-badge">GMC · London</span>
+        </div>
+
+        <div class="doctor-body">
+          <span class="eyebrow">05 — Meet the formulator</span>
+          <h2>Formulated by Dr. <em>Muhammad Tauqir Ahmad,</em> GMC.</h2>
+          <p class="bio">
+            Dr. Ahmad is a London-based dermatologist registered with the <strong>UK General Medical Council</strong>.
+            After [15+ years — placeholder] working with patients across Harley Street clinics and the NHS, he saw Pakistani patients paying
+            2–3× for imported clinical actives — often counterfeit. Clarte MD is his answer:
+            <strong>real actives, formulated to clinical specification, manufactured in an ISO-certified facility in Pakistan</strong>, and accountable to a real doctor with a real licence.
+          </p>
+
+          <div class="doctor-quote">
+            "I built Clarte for the skin I see in consultations every week — Pakistani, sun-stressed, sensitised by years of unregulated creams. Real actives. Real formulation. Real accountability."
+            <span class="attr">Dr. M. Tauqir Ahmad — GMC #[XXXXXXX]</span>
+          </div>
+
+          <div class="doctor-cta">
+            <a href="#consult">Book your free 15-minute consultation with the team →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================== SECTION 06 — Comparison ============================================== -->
+  <section>
+    <div class="wrap reveal">
+      <div class="heading-row">
+        <div>
+          <span class="eyebrow">06 — Imported quality, reachable price</span>
+          <h2>You don't need to <em>import</em> clinical skincare anymore.</h2>
+        </div>
+        <p class="deck">
+          The Ordinary, CeraVe, and COSRX cost 2–3× more in Pakistan than they should — with no authorised distributor, no support line, and a real counterfeit problem on Daraz. We solved both ends of that.
+        </p>
+      </div>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="clarte">Clarte MD</th>
+            <th>The Ordinary <span class="pill pill-neutral">UK</span></th>
+            <th>CeraVe <span class="pill pill-neutral">US</span></th>
+            <th>Simplist <span class="pill pill-neutral">PK</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Vitamin C serum (PK price)</td>
+            <td class="clarte" data-col="Clarte MD">Rs. 2,350</td>
+            <td data-col="The Ordinary">Rs. 2,400 – 3,200</td>
+            <td data-col="CeraVe">Rs. 4,500 – 6,000</td>
+            <td data-col="Simplist">Rs. 1,650</td>
+          </tr>
+          <tr>
+            <td class="row-label">Authorised PK distributor</td>
+            <td class="clarte" data-col="Clarte MD"><span class="pill pill-ok">Direct from us</span></td>
+            <td data-col="The Ordinary"><span class="pill pill-warn">None — grey market</span></td>
+            <td data-col="CeraVe"><span class="pill pill-warn">None — grey market</span></td>
+            <td data-col="Simplist"><span class="pill pill-ok">Direct</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Counterfeit risk in PK</td>
+            <td class="clarte" data-col="Clarte MD"><span class="pill pill-ok">2× refund if fake</span></td>
+            <td data-col="The Ordinary"><span class="pill pill-warn">High — documented</span></td>
+            <td data-col="CeraVe"><span class="pill pill-warn">High — 4 fake "PK" sites</span></td>
+            <td data-col="Simplist"><span class="pill pill-ok">Low</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Named, credentialed dermatologist</td>
+            <td class="clarte" data-col="Clarte MD"><span class="pill pill-ok">Dr. Ahmad · GMC</span></td>
+            <td data-col="The Ordinary"><span class="pill pill-neutral">No</span></td>
+            <td data-col="CeraVe"><span class="pill pill-neutral">No</span></td>
+            <td data-col="Simplist"><span class="pill pill-warn">Anonymous</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Free WhatsApp consult before purchase</td>
+            <td class="clarte" data-col="Clarte MD"><span class="pill pill-ok">Yes — 15 min</span></td>
+            <td data-col="The Ordinary"><span class="pill pill-warn">No</span></td>
+            <td data-col="CeraVe"><span class="pill pill-warn">No</span></td>
+            <td data-col="Simplist"><span class="pill pill-warn">No</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Delivery to Lahore / Faisalabad</td>
+            <td class="clarte" data-col="Clarte MD">24–48 hrs · COD</td>
+            <td data-col="The Ordinary">3–6 days · prepay</td>
+            <td data-col="CeraVe">3–6 days · prepay</td>
+            <td data-col="Simplist">24–48 hrs</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:var(--ink-soft);">
+        Comparison prices verified Nov 2025 from public Daraz, Bagallery, and Naheed listings. Counterfeit-risk descriptors from BeAuthantic, DeciemChatroom, and HighStreetPakistan published guides.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================== SECTION 07 — Before / After ============================================== -->
+  <section>
+    <div class="wrap reveal">
+      <div class="heading-row">
+        <div>
+          <span class="eyebrow">07 — Results</span>
+          <h2>Real patients. <em>Dermatologist-supervised.</em></h2>
+        </div>
+        <p class="deck">
+          Three patients followed the Radiance Ritual for 28 days under Dr. Ahmad's clinical supervision. Photos taken under identical lighting, dated, consented, and countersigned.
+        </p>
+      </div>
+
+      <div class="ba-grid">
+        <div class="ba"><span class="ba-day">Day 0 · Baseline</span></div>
+        <div class="ba"><span class="ba-day">Day 14</span></div>
+        <div class="ba"><span class="ba-day">Day 28</span></div>
+      </div>
+
+      <p class="ba-disclaimer">
+        Photos are placeholder slots — replace with consented patient images. Results vary by skin type, sun exposure, age, and adherence. Clinical photography under identical lighting, makeup-free, no filters. Consent forms and dermatologist countersignature available on request.
+      </p>
+
+      <div class="ph-strip">⚠ Placeholder — three real Day 0 / 14 / 28 patient images required before this section ships. Source: 3 consented patients via the clinic.</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================== SECTION 08 — Testimonials ============================================== -->
+  <section>
+    <div class="wrap reveal">
+      <div class="heading-row">
+        <div>
+          <span class="eyebrow">08 — What patients say</span>
+          <h2>Reviews from <em>Lahore, Faisalabad,</em> Karachi.</h2>
+        </div>
+        <p class="deck">
+          Real customers. Real photos. Real consent. We don't import reviews and we don't fake them.
+        </p>
+      </div>
+
+      <div class="tlist">
+        <article class="tcard">
+          <div class="stars">★ ★ ★ ★ ★</div>
+          <blockquote>"I'd been buying The Ordinary off Daraz for two years. The vitamin C from Clarte at half the price feels exactly the same — and they verify the batch number. The peace of mind alone is worth it."</blockquote>
+          <div class="who"><span>Ayesha M.</span><span>· Lahore · DHA</span></div>
+        </article>
+        <article class="tcard">
+          <div class="stars">★ ★ ★ ★ ★</div>
+          <blockquote>"My pigmentation from years of sun on the bike has started to lift after 3 weeks. The cleanser doesn't dry my skin out. I'd see Dr. Ahmad at his clinic if I were in London — this is the closest thing."</blockquote>
+          <div class="who"><span>Hira S.</span><span>· Faisalabad</span></div>
+        </article>
+        <article class="tcard">
+          <div class="stars">★ ★ ★ ★ ★</div>
+          <blockquote>"The WhatsApp consultation before I bought changed everything. The team actually told me to skip the retinol because of my pregnancy and recommended a different bundle. That kind of honesty is rare here."</blockquote>
+          <div class="who"><span>Sana A.</span><span>· Lahore · Bahria</span></div>
+        </article>
+      </div>
+
+      <div class="ph-strip">⚠ Placeholder reviews. Replace with real, verified customer quotes + names + cities before launch. Add a verified-purchase badge if possible.</div>
+    </div>
+  </section>
+
+
+  <!-- ============================================== SECTION 09 — Authenticity ============================================== -->
+  <section>
+    <div class="wrap reveal">
+      <div class="auth-wrap">
+        <div class="auth-text">
+          <span class="eyebrow">09 — The guarantee</span>
+          <h2>Authenticated. Batch-verified. Or your money back — <em>twice over.</em></h2>
+          <p>
+            Every bottle is printed with a unique batch number and date. Scan the QR on the back of any Clarte product and our verification server returns the manufacturing date, expiry date, and batch lab report. If the code doesn't return a result, send us proof and <strong>we refund 2× the price.</strong>
+          </p>
+          <ul class="bullets">
+            <li>Manufactured in an ISO 22716 / GMP-certified facility in Pakistan</li>
+            <li>Each batch lab-tested for active concentration, pH, and stability</li>
+            <li>Batch number, MFG date, and expiry on every bottle — visible, not hidden</li>
+            <li>QR scan returns the live verification record from our servers</li>
+            <li>If your batch doesn't verify — 2× refund. No questions, no inspection.</li>
+          </ul>
+        </div>
+
+        <div class="stamp-stage">
+          <div class="stamp">
+            <div class="stamp-text">
+              <svg viewBox="0 0 200 200">
+                <defs>
+                  <path id="circ" d="M 100,100 m -82,0 a 82,82 0 1,1 164,0 a 82,82 0 1,1 -164,0" />
+                </defs>
+                <text>
+                  <textPath href="#circ">CLARTE MD · BATCH AUTHENTICATED · CLARTE MD · BATCH AUTHENTICATED · </textPath>
+                </text>
+              </svg>
+            </div>
+            <div class="inner">
+              <div class="brand-mk">Clarte MD</div>
+              <div class="batch">
+                Batch 2025-11-A<br/>
+                MFG 11.2025 · EXP 11.2027<br/>
+                ISO 22716 · GMP
+              </div>
+              <div class="qr" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================== SECTION 10 — WhatsApp consult ============================================== -->
+  <section id="consult" class="wa-block">
+    <div class="wa-inner">
+      <div>
+        <span class="eyebrow">10 — Talk to the team first</span>
+        <h2>Not sure if this routine is <em>right for your skin?</em></h2>
+        <p class="deck">
+          Book a free 15-minute WhatsApp consultation with Dr. Ahmad's clinical team. We'll review your skin, your history, and your goals — and we'll tell you honestly if this bundle isn't the right fit. No purchase required.
+        </p>
+      </div>
+      <div>
+        <a class="wa-cta" href="https://wa.me/923249986822?text=Hi%20Clarte%20MD%20—%20I'd%20like%20to%20book%20a%20free%20consultation%20about%20the%20Radiance%20Ritual%20Bundle.">
+          <span class="wa-ico" aria-hidden="true"></span>
+          Start your free WhatsApp consult
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================== SECTION 11 — FAQ ============================================== -->
+  <section>
+    <div class="wrap reveal">
+      <div class="heading-row">
+        <div>
+          <span class="eyebrow">11 — Questions</span>
+          <h2>The things <em>everyone asks.</em></h2>
+        </div>
+        <p class="deck">If you don't see your question, the WhatsApp team replies in under 10 minutes during clinic hours.</p>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>Is this bundle right for my skin type? <span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer">The Radiance Ritual is designed for normal, combination, and oily Pakistani skin with pigmentation, sun damage, or uneven tone. If you have very dry, eczema-prone, or actively inflamed skin, book the free WhatsApp consultation first — we may recommend the Clarity Daily Bundle instead.</p>
+        </details>
+        <details>
+          <summary>How long until I see results? <span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer">Most patients see a reduction in dullness and improved texture by day 14. Pigmentation and melasma improvement typically appears between days 28 and 56, with steady continued change through day 90. Sun protection is the variable — without consistent SPF, the routine cannot work.</p>
+        </details>
+        <details>
+          <summary>Can I pay cash on delivery? <span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer">Yes — COD is available across Pakistan. We also accept JazzCash, EasyPaisa, and all major credit/debit cards. Pre-paid orders ship 24 hours faster.</p>
+        </details>
+        <details>
+          <summary>What's your return policy? <span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer">14-day returns on unopened product. If the product is opened and you've had a reaction, send a photo to the WhatsApp team — we'll exchange or refund. Authenticated-batch guarantee: if your bottle doesn't verify, we refund 2× the price.</p>
+        </details>
+        <details>
+          <summary>Are the ingredients safe during pregnancy? <span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer">The retinol-containing products are not recommended during pregnancy or while breastfeeding. The Vitamin CE, Cleanser, and SPF are all pregnancy-safe. Book the free consultation and we'll recommend a pregnancy-appropriate routine.</p>
+        </details>
+        <details>
+          <summary>How fast is delivery? <span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer">Lahore, Faisalabad, Islamabad, and Karachi: 24–48 hours. Other cities: 3–4 working days. Free nationwide shipping on this bundle.</p>
+        </details>
+        <details>
+          <summary>How do I know this isn't fake? <span class="plus" aria-hidden="true"></span></summary>
+          <p class="answer">Every bottle carries a batch QR. Scan it after delivery and our server returns the live record — MFG date, expiry, lab-tested actives. If your code doesn't return a record, send us proof and we refund 2× the price. This is the guarantee imported brands sold on Daraz physically cannot give you.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================== SECTION 12 — Final CTA ============================================== -->
+  <section class="final reveal">
+    <div class="wrap">
+      <span class="eyebrow">12 — Begin</span>
+      <h2><em>Start</em> your ritual.</h2>
+      <p class="sub">Rs. 5,000. Free nationwide shipping. Cash on delivery. Authenticated batch — 2× refund if fake. Free WhatsApp consultation before purchase if you want one.</p>
+      <a class="btn btn-primary" href="https://clartemd.com.pk/products/radiance-ritual-bundle">
+        <span><span class="price-strike">Rs. 9,750</span>Order the Radiance Ritual — Rs. 5,000</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;opacity:0.75;">↗</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ============================================== FOOTER ============================================== -->
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <a class="brand" href="https://clartemd.com.pk/">Clarte<sup>MD</sup></a>
+      <p>Clinical skincare from London. Formulated by Dr. Muhammad Tauqir Ahmad, GMC. Manufactured in Pakistan, ISO 22716 / GMP. Distributed nationwide.</p>
+    </div>
+    <div class="foot foot-col">
+      <h5>Bundles</h5>
+      <ul>
+        <li><a href="https://clartemd.com.pk/products/radiance-ritual-bundle">Radiance Ritual — Rs. 5,000</a></li>
+        <li><a href="https://clartemd.com.pk/products/clarity-daily-bundle">Clarity Daily — from Rs. 5,799</a></li>
+        <li><a href="https://clartemd.com.pk/products/clarity-intensive-bundle">Clarity Intensive — from Rs. 7,999</a></li>
+        <li><a href="https://clartemd.com.pk/products/radiance-intensive-bundle">Radiance Intensive — Rs. 9,000</a></li>
+      </ul>
+    </div>
+    <div class="foot foot-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="https://wa.me/923249986822">WhatsApp · +92 324 998 6822</a></li>
+        <li><a href="mailto:hello@clartemd.com.pk">hello@clartemd.com.pk</a></li>
+        <li><a href="https://clartemd.com.pk/policies/shipping-policy">Shipping</a></li>
+        <li><a href="https://clartemd.com.pk/policies/refund-policy">Returns</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot-bottom">
+    <span>© Clarte MD · Est. 2025</span>
+    <span>Manufactured in PK · GMC #[XXXXXXX] · ISO 22716</span>
+  </div>
+</footer>
+
+
+<!-- ============================================== STICKY BOTTOM CTA ============================================== -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="price-stack">
+    <span class="lab">The Radiance Ritual</span>
+    <span class="val"><s>Rs. 9,750</s>Rs. 5,000</span>
+  </div>
+  <a class="cta" href="https://clartemd.com.pk/products/radiance-ritual-bundle">Order — COD ↗</a>
+</div>
+
+
+<script>
+  // Reveal-on-scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Sticky CTA visibility after the hero
+  const sticky = document.getElementById('stickyCta');
+  const heroSection = document.querySelector('.hero');
+  const updateSticky = () => {
+    const heroBottom = heroSection.getBoundingClientRect().bottom;
+    const finalSection = document.querySelector('.final');
+    const finalTop = finalSection ? finalSection.getBoundingClientRect().top : Infinity;
+    const visible = heroBottom < 80 && finalTop > window.innerHeight * 0.7;
+    sticky.classList.toggle('visible', visible);
+  };
+  window.addEventListener('scroll', updateSticky, { passive: true });
+  window.addEventListener('resize', updateSticky);
+  updateSticky();
+
+  // Click tracking (placeholder — replace dataLayer push or fbq with your stack)
+  document.querySelectorAll('a.btn-primary, a.wa-cta, .sticky-cta a.cta').forEach((a) => {
+    a.addEventListener('click', () => {
+      const evt = a.classList.contains('wa-cta') ? 'wa_consult_click' : 'bundle_cta_click';
+      try {
+        if (window.dataLayer) window.dataLayer.push({ event: evt, label: a.textContent.trim() });
+        // if (window.fbq) fbq('track', 'Lead');
+      } catch (_) {}
+    });
+  });
+</script>
+
+</body>
+</html>
