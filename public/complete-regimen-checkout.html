@@ -1260,6 +1260,7 @@
   // discount % keyed by item COUNT (unique SKUs), not quantity
   const TIERS = { 2: 5, 3: 8, 4: 12, 5: 15, 6: 17, 7: 18, 8: 20 };
   const FREE_SHIP_MIN = 4000;
+  const ORDER_ENDPOINT = '/api/create-order';
 
   // ─────────────────── STATE ───────────────────
   const cart = {}; // { sku: qty }
@@ -1434,6 +1435,23 @@
     document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
   });
 
+  function showOrderError(msg) {
+    let el = document.getElementById('orderError');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'orderError';
+      el.style.cssText = 'margin-top:12px; padding:12px 14px; border:1px solid #c0392b; background:#fdecea; color:#922; border-radius:10px; font-size:14px; line-height:1.5;';
+      const btn = document.getElementById('submitBtn');
+      btn.parentNode.insertBefore(el, btn.nextSibling);
+    }
+    el.textContent = msg;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function clearOrderError() {
+    const el = document.getElementById('orderError');
+    if (el) el.remove();
+  }
+
   // Form submit
   document.getElementById('orderForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -1441,7 +1459,25 @@
     if (s.uniqueCount === 0) { alert('Your bundle is empty.'); return; }
 
     const fd = new FormData(e.target);
+    const customerNotes = (fd.get('notes') || '').trim();
+
+    // The API doesn't yet support applied_discount, so the draft order will arrive
+    // with the UNDISCOUNTED subtotal. Surface the discount/perks loudly in the
+    // order note so staff applies the manual discount before invoicing.
+    const perkLines = [];
+    if (s.tierPct > 0) perkLines.push(`Bundle tier: ${s.tierPct}% off (Rs. ${s.discountAmt})`);
+    if (s.freeShip) perkLines.push('Free shipping');
+    if (s.uniqueCount >= 6) perkLines.push('Free consultation');
+    if (s.uniqueCount >= 7) perkLines.push('Free mini');
+    if (s.uniqueCount >= 8) perkLines.push('Protocol card');
+    const staffBlock = perkLines.length
+      ? `[STAFF: apply manual discount before sending invoice]\nCustomer-visible total: Rs. ${s.total}\n${perkLines.join(' · ')}`
+      : '';
+    const combinedNotes = [staffBlock, customerNotes ? `Customer note: ${customerNotes}` : '']
+      .filter(Boolean).join('\n\n');
+
     const payload = {
+      page: 'complete-regimen-checkout',
       contact: {
         name: fd.get('name'),
         phone: fd.get('phone'),
@@ -1451,38 +1487,51 @@
         address: fd.get('address'),
         city: fd.get('city'),
         postal: fd.get('postal'),
-        notes: fd.get('notes'),
+        notes: combinedNotes,
       },
       payment: fd.get('pay'),
       items: s.items.map(i => ({ sku: i.sku, name: i.name, qty: i.qty, price: i.price })),
       totals: {
         subtotal: s.subtotal,
-        discount_pct: s.tierPct,
-        discount_amt: s.discountAmt,
         shipping: s.shippingCost,
-        total: s.total,
-      },
-      perks: {
-        free_shipping: s.freeShip,
-        free_consult: s.uniqueCount >= 6,
-        free_mini: s.uniqueCount >= 7,
-        protocol_card: s.uniqueCount >= 8,
       },
       ts: new Date().toISOString(),
     };
 
-    // TODO: replace with GoHighLevel webhook URL
-    // const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/...';
-    // try {
-    //   await fetch(GHL_WEBHOOK, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-    // } catch (err) { console.warn('GHL submit failed, falling back to WhatsApp', err); }
+    const btn = document.getElementById('submitBtn');
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    btn.style.cursor = 'wait';
+    btn.textContent = 'Placing order…';
+    clearOrderError();
 
-    console.log('Order payload (to be sent to GHL):', payload);
-
-    // Show success block
-    document.getElementById('checkoutGrid').classList.add('hide');
-    document.getElementById('successBlock').classList.add('show');
-    document.getElementById('successBlock').scrollIntoView({ behavior: 'smooth' });
+    try {
+      const res = await fetch(ORDER_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        const msg = data.error || `We couldn't place your order (status ${res.status}). Please try again, or WhatsApp us and we'll take it manually.`;
+        showOrderError(msg);
+        btn.disabled = false;
+        btn.style.opacity = '';
+        btn.style.cursor = '';
+        btn.textContent = originalLabel;
+        return;
+      }
+      document.getElementById('checkoutGrid').classList.add('hide');
+      document.getElementById('successBlock').classList.add('show');
+      document.getElementById('successBlock').scrollIntoView({ behavior: 'smooth' });
+    } catch (err) {
+      showOrderError("Network issue — we couldn't reach the order system. Please check your connection and try again, or WhatsApp us.");
+      btn.disabled = false;
+      btn.style.opacity = '';
+      btn.style.cursor = '';
+      btn.textContent = originalLabel;
+    }
   });
 
   renderGrid();
