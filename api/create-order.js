@@ -201,7 +201,14 @@ export default async function handler(request) {
   const clientSecret = process.env.SHOPIFY_CLIENT_SECRET;
   const domain = process.env.SHOPIFY_STORE_DOMAIN;
   if (!clientId || !clientSecret || !domain) {
-    return jsonRes({ error: 'Server not configured (Shopify env vars missing).' }, 500, headers);
+    return jsonRes({
+      error: 'Server not configured (Shopify env vars missing).',
+      _diagnostic: {
+        SHOPIFY_CLIENT_ID: clientId ? 'set' : 'MISSING',
+        SHOPIFY_CLIENT_SECRET: clientSecret ? 'set' : 'MISSING',
+        SHOPIFY_STORE_DOMAIN: domain ? `set (${domain})` : 'MISSING',
+      },
+    }, 500, headers);
   }
 
   const url = `https://${domain}/admin/api/${API_VERSION}/draft_orders.json`;
