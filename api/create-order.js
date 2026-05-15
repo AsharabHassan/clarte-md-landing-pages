@@ -119,6 +119,11 @@ function buildDraftOrder(payload) {
     line_items,
     shipping_address: address,
     billing_address: address,
+    // Top-level email/phone bind the order to a customer record (guest if none exists)
+    // and surface in the Shopify admin's Customer panel. A bare customer{} without
+    // an id is ignored by the API, which is why earlier drafts showed no contact.
+    email: contact.email || undefined,
+    phone: contact.phone || undefined,
     note: shipping.notes ? `Customer note: ${shipping.notes}` : undefined,
     note_attributes: [
       { name: 'lp_page', value: page || '' },
@@ -137,16 +142,6 @@ function buildDraftOrder(payload) {
     taxes_included: true,
     use_customer_default_address: false,
   };
-
-  // Attach customer only if we have a contact point Shopify will accept.
-  if (contact.email || contact.phone) {
-    draft_order.customer = {
-      first_name: first,
-      last_name: last,
-      email: contact.email || undefined,
-      phone: contact.phone || undefined,
-    };
-  }
 
   // Mirror the LP's shipping line so Shopify totals match what the buyer saw.
   if (typeof totals.shipping === 'number' && totals.shipping > 0) {
