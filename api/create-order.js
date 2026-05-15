@@ -226,19 +226,29 @@ export default async function handler(request) {
   }
 
   let resp;
+  let phase = 'oauth';
   try {
     let token = await getAccessToken(domain, clientId, clientSecret);
+    phase = 'draft-post';
     resp = await postDraft(token);
 
     // If the cached token was revoked or rotated, force a fresh exchange and retry once.
     if (resp.status === 401) {
+      phase = 'oauth-retry';
       token = await getAccessToken(domain, clientId, clientSecret, true);
+      phase = 'draft-post-retry';
       resp = await postDraft(token);
     }
   } catch (err) {
     return jsonRes({
       error: 'Order system temporarily unavailable. Please try again or WhatsApp us to place the order.',
-      _diagnostic: `Shopify auth/network error: ${String(err)}`,
+      _diagnostic: {
+        phase,
+        domain,
+        errName: err?.name || null,
+        errMessage: err?.message || String(err),
+        errStatus: err?.status || null,
+      },
     }, 502, headers);
   }
 
