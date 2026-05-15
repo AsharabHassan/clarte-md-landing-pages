@@ -2507,6 +2507,7 @@
 
   const USE_MOCK = false;
   const AI_ENDPOINT = '/api/generate-after';
+  const ORDER_ENDPOINT = '/api/create-order';
 
   const PROGRESS_STEPS = [
     { pct: 12, msg: 'Reading texture, tone, and inflammation markers…' },
@@ -2614,6 +2615,23 @@
     window.addEventListener('touchend', onUp);
   }
 
+  function showOrderError(msg) {
+    let el = document.getElementById('orderError');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'orderError';
+      el.style.cssText = 'margin-top:12px; padding:12px 14px; border:1px solid #c0392b; background:#fdecea; color:#922; border-radius:10px; font-size:14px; line-height:1.5;';
+      const btn = document.getElementById('submitBtn');
+      btn.parentNode.insertBefore(el, btn.nextSibling);
+    }
+    el.textContent = msg;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function clearOrderError() {
+    const el = document.getElementById('orderError');
+    if (el) el.remove();
+  }
+
   document.getElementById('orderForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!bundleInCart && Object.keys(crossSellCart).length === 0) { alert('Your bundle is empty. Please add the Even Tone Protocol to continue.'); return; }
@@ -2633,11 +2651,41 @@
       bundle_in_cart: bundleInCart, used_ai_preview: !!uploadedImageBlob,
       ts: new Date().toISOString(),
     };
-    // TODO: replace with GoHighLevel webhook URL
-    console.log('Order payload (→ GHL):', payload);
-    document.getElementById('intakeGrid').classList.add('hide');
-    document.getElementById('successBlock').classList.add('show');
-    document.getElementById('successBlock').scrollIntoView({ behavior: 'smooth' });
+
+    const btn = document.getElementById('submitBtn');
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    btn.style.cursor = 'wait';
+    btn.textContent = 'Placing order…';
+    clearOrderError();
+
+    try {
+      const res = await fetch(ORDER_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        const msg = data.error || `We couldn't place your order (status ${res.status}). Please try again, or WhatsApp us and we'll take it manually.`;
+        showOrderError(msg);
+        btn.disabled = false;
+        btn.style.opacity = '';
+        btn.style.cursor = '';
+        btn.textContent = originalLabel;
+        return;
+      }
+      document.getElementById('intakeGrid').classList.add('hide');
+      document.getElementById('successBlock').classList.add('show');
+      document.getElementById('successBlock').scrollIntoView({ behavior: 'smooth' });
+    } catch (err) {
+      showOrderError("Network issue — we couldn't reach the order system. Please check your connection and try again, or WhatsApp us.");
+      btn.disabled = false;
+      btn.style.opacity = '';
+      btn.style.cursor = '';
+      btn.textContent = originalLabel;
+    }
   });
 
   renderCrossSell();
