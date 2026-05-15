@@ -3,16 +3,58 @@
 // via the Admin REST API. Draft orders are manually reviewed before fulfillment.
 //
 // Env vars required (set in Vercel → Project Settings → Environment Variables):
-//   SHOPIFY_ADMIN_TOKEN   atkn_... from Dev Dashboard "App automation token"
-//   SHOPIFY_STORE_DOMAIN  e.g. clartemd.myshopify.com (no scheme, no trailing slash)
+//   SHOPIFY_CLIENT_ID      Custom app Client ID from partners.shopify.com Dev Dashboard
+//   SHOPIFY_CLIENT_SECRET  Custom app Client Secret (mark as Sensitive)
+//   SHOPIFY_STORE_DOMAIN   e.g. clartemd.myshopify.com (no scheme, no trailing slash)
 //
-// NOTE on token expiry: Dev Dashboard automation tokens expire (~6 months).
-// Current token expires 2026-11-12. Rotate before then or orders will start
-// returning 401 from this endpoint.
+// Auth model: Shopify killed the legacy shpat_ reveal-once flow on 2026-01-01.
+// New custom apps use OAuth client-credentials. We exchange Client ID + Secret
+// for a ~24h access token, cache it in module scope across warm invocations,
+// and refresh on 401.
 
 export const config = { runtime: 'edge' };
 
 const API_VERSION = '2026-04';
+
+// Module-scope token cache. Persists across warm invocations on the same instance.
+let cachedToken = null;
+let cachedTokenExpiresAt = 0;
+const TOKEN_REFRESH_BUFFER_MS = 60_000; // refresh 1 min before stated expiry
+
+async function getAccessToken(domain, clientId, clientSecret, forceRefresh = false) {
+  const now = Date.now();
+  if (!forceRefresh && cachedToken && now < cachedTokenExpiresAt - TOKEN_REFRESH_BUFFER_MS) {
+    return cachedToken;
+  }
+
+  const resp = await fetch(`https://${domain}/admin/oauth/access_token`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      client_id: clientId,
+      client_secret: clientSecret,
+      grant_type: 'client_credentials',
+    }),
+  });
+
+  if (!resp.ok) {
+    const text = await resp.text().catch(() => '');
+    const err = new Error(`Shopify OAuth exchange failed (${resp.status}): ${text.slice(0, 400)}`);
+    err.status = resp.status;
+    throw err;
+  }
+
+  const data = await resp.json();
+  if (!data.access_token) {
+    throw new Error('Shopify OAuth response missing access_token.');
+  }
+
+  cachedToken = data.access_token;
+  // expires_in is seconds; default to 23h if absent.
+  const ttlMs = (typeof data.expires_in === 'number' ? data.expires_in : 82_800) * 1000;
+  cachedTokenExpiresAt = now + ttlMs;
+  return cachedToken;
+}
 
 const ALLOWED_ORIGINS = [
   'https://clartemd.com.pk',
@@ -155,36 +197,50 @@ export default async function handler(request) {
     return jsonRes({ error: validationError }, 400, headers);
   }
 
-  const token = process.env.SHOPIFY_ADMIN_TOKEN;
+  const clientId = process.env.SHOPIFY_CLIENT_ID;
+  const clientSecret = process.env.SHOPIFY_CLIENT_SECRET;
   const domain = process.env.SHOPIFY_STORE_DOMAIN;
-  if (!token || !domain) {
+  if (!clientId || !clientSecret || !domain) {
     return jsonRes({ error: 'Server not configured (Shopify env vars missing).' }, 500, headers);
   }
 
   const url = `https://${domain}/admin/api/${API_VERSION}/draft_orders.json`;
+  const draftPayload = JSON.stringify(buildDraftOrder(body));
 
-  let resp;
-  try {
-    resp = await fetch(url, {
+  async function postDraft(token) {
+    return fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'X-Shopify-Access-Token': token,
       },
-      body: JSON.stringify(buildDraftOrder(body)),
+      body: draftPayload,
     });
+  }
+
+  let resp;
+  try {
+    let token = await getAccessToken(domain, clientId, clientSecret);
+    resp = await postDraft(token);
+
+    // If the cached token was revoked or rotated, force a fresh exchange and retry once.
+    if (resp.status === 401) {
+      token = await getAccessToken(domain, clientId, clientSecret, true);
+      resp = await postDraft(token);
+    }
   } catch (err) {
-    return jsonRes({ error: 'Upstream network error.', detail: String(err) }, 502, headers);
+    return jsonRes({
+      error: 'Order system temporarily unavailable. Please try again or WhatsApp us to place the order.',
+      _diagnostic: `Shopify auth/network error: ${String(err)}`,
+    }, 502, headers);
   }
 
   if (!resp.ok) {
     const text = await resp.text().catch(() => '');
-    // 401 most likely means the automation token expired or was revoked.
-    // Surface a clear signal so it doesn't get diagnosed as "the form is broken."
     if (resp.status === 401) {
       return jsonRes({
         error: 'Order system temporarily unavailable. Please try again or WhatsApp us to place the order.',
-        _diagnostic: 'Shopify auth failed — automation token likely expired or revoked. Rotate via Dev Dashboard → App → Settings.',
+        _diagnostic: 'Shopify auth failed even after token refresh — check Client ID/Secret and that the custom app is installed on this store.',
         detail: text.slice(0, 600),
       }, 502, headers);
     }
