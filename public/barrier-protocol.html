@@ -1133,6 +1133,37 @@
       background: radial-gradient(closest-side, rgba(138,176,224,0.25), transparent 70%);
       pointer-events: none;
     }
+    .rx-aside .rx-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+      gap: 8px;
+      margin: 0 0 22px;
+      padding: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      position: relative;
+    }
+    .rx-aside .rx-strip-tile {
+      aspect-ratio: 1 / 1;
+      background: var(--white);
+      border-radius: 6px;
+      overflow: hidden;
+      display: grid; place-items: center;
+    }
+    .rx-aside .rx-strip-tile img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      padding: 6px;
+      display: block;
+    }
+    .rx-aside .rx-strip-tile.empty::after {
+      content: '';
+      width: 24px; height: 24px;
+      background: var(--rule);
+      border-radius: 50%;
+      opacity: 0.4;
+    }
     .rx-aside .aside-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
@@ -2148,6 +2179,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
 
       <aside class="rx-aside">
+        <div class="rx-strip" id="rxStrip"></div>
         <span class="aside-label">Included with the prescription</span>
         <h4 class="display">Four perks Clarté extends to <em>every patient.</em></h4>
         <ol class="rx-includes">
@@ -2760,6 +2792,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   });
 
+  function renderRxStrip() {
+    const strip = document.getElementById('rxStrip');
+    if (!strip) return;
+    strip.innerHTML = BUNDLE.items.map(sku => {
+      const p = PRODUCTS[sku];
+      if (!p || !p.image) return `<div class="rx-strip-tile empty" aria-hidden="true"></div>`;
+      return `<div class="rx-strip-tile"><img src="${p.image}" alt="${p.name}" loading="lazy" /></div>`;
+    }).join('');
+  }
+
+  renderRxStrip();
   renderCrossSell();
   renderCart();
 </script>
