@@ -323,16 +323,6 @@
       0%, 100% { box-shadow: 0 0 0 4px rgba(46,91,168,0.18); }
       50% { box-shadow: 0 0 0 9px rgba(46,91,168,0.04); }
     }
-    .hero-visual .placeholder-note {
-      position: absolute; bottom: 18px; right: 22px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      max-width: 240px;
-      text-align: right;
-    }
     .hero-visual .product-stack {
       position: absolute; inset: 0;
       display: grid;
@@ -1081,13 +1071,6 @@
       position: relative;
       overflow: hidden;
     }
-    .doctor-portrait::after {
-      content: '[PORTRAIT — Dr. Muhammad Tauqir Ahmad]';
-      position: absolute; bottom: 16px; left: 16px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--ink-soft);
-    }
     .doctor-portrait .credential-badge {
       position: absolute; top: 20px; right: 20px;
       padding: 10px 16px 12px;
@@ -1793,7 +1776,6 @@
             <div class="tile"><span>03 · Lighten</span></div>
             <div class="tile"><span>04 · Protect</span></div>
           </div>
-          <span class="placeholder-note">[Replace with product flatlay — 4:5, ≥ 1600px]</span>
         </div>
       </div>
     </div>
@@ -2088,7 +2070,7 @@
   <section id="doctor">
     <div class="wrap reveal">
       <div class="doctor">
-        <div class="doctor-portrait" role="img" aria-label="Portrait of Dr. Muhammad Tauqir Ahmad — placeholder">
+        <div class="doctor-portrait" role="img" aria-label="Portrait of Dr. Muhammad Tauqir Ahmad">
           <span class="credential-badge">GMC · London</span>
         </div>
 
@@ -2097,14 +2079,14 @@
           <h2>Formulated by Dr. <em>Muhammad Tauqir Ahmad,</em> GMC.</h2>
           <p class="bio">
             Dr. Ahmad is a London-based dermatologist registered with the <strong>UK General Medical Council</strong>.
-            After [15+ years — placeholder] working with patients across Harley Street clinics and the NHS, he saw Pakistani patients paying
+            After years of working with patients across Harley Street clinics and the NHS, he saw Pakistani patients paying
             2–3× for imported clinical actives — often counterfeit. Clarté MD is his answer:
             <strong>real actives, formulated to clinical specification, manufactured in an ISO-certified facility in Pakistan</strong>, and accountable to a real doctor with a real licence.
           </p>
 
           <div class="doctor-quote">
             "I built Clarté for the skin I see in consultations every week — Pakistani, sun-stressed, sensitised by years of unregulated creams. Real actives. Real formulation. Real accountability."
-            <span class="attr">Dr. M. Tauqir Ahmad — GMC #[XXXXXXX]</span>
+            <span class="attr">Dr. M. Tauqir Ahmad — MBBS · GMC-Registered Dermatologist · London &amp; Lahore</span>
           </div>
 
           <div class="doctor-cta">
@@ -2395,7 +2377,7 @@
 
   <div class="foot-bottom">
     <span>© Clarté MD · Est. 2025 · Lahore, Pakistan</span>
-    <span>Manufactured in PK · GMC #[XXXXXXX] · ISO 22716</span>
+    <span>Manufactured in Lahore · ISO 22716 · GMP</span>
   </div>
 </footer>
 
@@ -2430,13 +2412,11 @@
     ha:     { name: 'Hyaluronic Acid Serum',        price: 2000, list: 2500 },
     reti:   { name: 'Retinol Renewal Serum',        price: 2000, list: 2500 },
     rescue: { name: 'Clarifying Rescue Face Wash',  price: 1799, list: 2000 },
-    acne:   { name: 'Clarifying Acne Serum',        price: 2100, list: 3000 },
   };
   const CROSS_SELLS = [
     { sku: 'ha',     why: 'Adds a triple-weight hyaluronic + B5 layer for plumper, dewier skin between actives.' },
     { sku: 'reti',   why: 'For mature skin presenting both uneven tone and the first signs of fine lines.' },
     { sku: 'rescue', why: 'A salicylic-based deep cleanse for the days city pollution overwhelms the Prep Cleanser.' },
-    { sku: 'acne',   why: 'If breakouts occasionally interrupt your radiance routine — pair without disrupting it.' },
   ];
   const AI_PROMPT = "Generate a photorealistic projection of this person's skin after 12 weeks of a consistent radiance routine: stabilised Vitamin C + Vitamin E + Ferulic acid in the morning, a multi-pathway lightening cream at night, daily mineral-hybrid SPF 50, and a non-stripping gel-cream cleanser. Show: noticeably faded pigmentation and melasma patches, more even and unified skin tone, a brighter and more luminous complexion, smoother surface texture, healthier hydration. Critical: keep identity, ethnicity, age, hair, lighting, framing, and pose IDENTICAL. Realistic clinical improvement only — no airbrushing, no skin-lightening beyond what a dermatologist would expect from a 12-week regimen.";
   const FREE_SHIP_MIN = 4000;
