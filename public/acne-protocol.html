@@ -3,6 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-P8VD7TBS');</script>
+  <!-- End Google Tag Manager -->
   <title>The Clear Skin Protocol — Clarté MD · Case Study 001</title>
   <meta name="description" content="A dermatologist-led 12-week clinical regimen for active acne and post-acne marks. Upload a selfie; see a photoreal projection of week 12. Formulated in Lahore by Dr. Tauqir Ahmad, GMC-registered." />
 
@@ -542,7 +550,8 @@
       display: flex; gap: 10px;
       margin-top: 6px; flex-wrap: wrap; justify-content: center;
     }
-    .dropzone .dz-buttons button {
+    .dropzone .dz-buttons button,
+    .dropzone .dz-buttons label {
       background: var(--white);
       border: 1px solid var(--rule-strong);
       padding: 10px 18px;
@@ -555,8 +564,10 @@
       transition: background .15s, color .15s, border-color .15s;
       display: inline-flex; align-items: center; gap: 7px;
       min-height: 40px;
+      user-select: none;
     }
-    .dropzone .dz-buttons button:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .dropzone .dz-buttons button:hover,
+    .dropzone .dz-buttons label:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
     .dropzone .specs {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
@@ -1216,9 +1227,27 @@
       padding: 24px;
       display: flex; flex-direction: column; gap: 12px;
       transition: border-color .2s, transform .2s, box-shadow .2s;
+      overflow: hidden;
     }
     .cs-card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -20px rgba(14,31,58,0.18); }
     .cs-card.added { border-color: var(--cobalt); background: var(--sky); }
+    .cs-card .cs-image {
+      margin: -24px -24px 4px;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, var(--sky) 0%, var(--sky-2) 100%);
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-card .cs-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cs-card .cs-image.empty::after {
+      content: 'Photo pending';
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-faint);
+    }
     .cs-card .cs-num {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
@@ -1821,6 +1850,10 @@
   </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P8VD7TBS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!-- TOPBAR -->
 <header class="topbar">
@@ -1924,14 +1957,14 @@
             <h4 class="display">Submit specimen.</h4>
             <p>Drag a photograph here, or choose one from your device.</p>
             <div class="dz-buttons">
-              <button type="button" id="btnUpload">
+              <label for="fileInput" id="btnUpload" role="button" tabindex="0">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
                 Choose file
-              </button>
-              <button type="button" id="btnCamera">
+              </label>
+              <label for="cameraInput" id="btnCamera" role="button" tabindex="0">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 2h6l1 2h4v16H4V4h4l1-2zm3 5c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 2c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3z"/></svg>
                 Take photo
-              </button>
+              </label>
             </div>
             <input type="file" id="fileInput" class="file-input" accept="image/jpeg,image/png,image/webp" />
             <input type="file" id="cameraInput" class="file-input" accept="image/*" capture="user" />
@@ -2421,14 +2454,14 @@
     savingsPct: 17,
   };
   const PRODUCTS = {
-    prep:   { name: 'Radiance Prep Cleanser',       price: 1799, list: 2000 },
-    rescue: { name: 'Clarifying Rescue Face Wash',  price: 1799, list: 2000 },
-    vitc:   { name: 'Vitamin CE Ferrulic Serum',    price: 2250, list: 2950 },
-    acne:   { name: 'Clarifying Acne Serum',        price: 2100, list: 3000 },
-    ha:     { name: 'Hyaluronic Acid Serum',        price: 2000, list: 2500 },
-    reti:   { name: 'Retinol Serum',                price: 2000, list: 2500 },
-    light:  { name: 'Radiance Lightening Cream',    price: 2500, list: 4500 },
-    spf:    { name: 'Barrier Restore SPF 50+',      price: 1900, list: 2500 },
+    prep:   { name: 'Radiance Prep Cleanser',       price: 1799, list: 2000, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/Prep.png?v=1773743330' },
+    rescue: { name: 'Clarifying Rescue Face Wash',  price: 1799, list: 2000, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/wash.png?v=1773743070' },
+    vitc:   { name: 'Vitamin CE Ferrulic Serum',    price: 2250, list: 2950, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/3390b799-35fe-425b-bae9-41e4c8e41139.png?v=1773338016' },
+    acne:   { name: 'Clarifying Acne Serum',        price: 2100, list: 3000, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/Generated_Image_March_13_2026_-_3_48AM.png?v=1773743197' },
+    ha:     { name: 'Hyaluronic Acid Serum',        price: 2000, list: 2500, image: null },
+    reti:   { name: 'Retinol Serum',                price: 2000, list: 2500, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/Gemini_Generated_Image_rwcfs4rwcfs4rwcf.png?v=1773881855' },
+    light:  { name: 'Radiance Lightening Cream',    price: 2500, list: 4500, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/Generated_Image_March_13_2026_-_3_37AM.png?v=1773743441' },
+    spf:    { name: 'Barrier Restore SPF 50+',      price: 1900, list: 2500, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/91edf02b-ef9c-4062-a6b9-f0975d941393.png?v=1773337514' },
   };
   const CROSS_SELLS = [
     { sku: 'prep',  why: 'Pair with the Rescue Wash for a gentler morning cleanse.' },
@@ -2451,6 +2484,9 @@
       const added = crossSellCart[cs.sku];
       return `
         <article class="cs-card ${added ? 'added' : ''}" id="cs-${cs.sku}">
+          <div class="cs-image${p.image ? '' : ' empty'}">
+            ${p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy" />` : ''}
+          </div>
           <div class="cs-num">0${i+5}</div>
           <div class="cs-name">${p.name}</div>
           <p class="cs-why">${cs.why}</p>
@@ -2506,8 +2542,10 @@
   const fileInput = document.getElementById('fileInput');
   const cameraInput = document.getElementById('cameraInput');
   const dropzone = document.getElementById('dropzone');
-  document.getElementById('btnUpload').addEventListener('click', e => { e.stopPropagation(); fileInput.click(); });
-  document.getElementById('btnCamera').addEventListener('click', e => { e.stopPropagation(); cameraInput.click(); });
+  // Labels with `for=` fire the input natively (preserves `capture` on mobile).
+  // We only stop propagation so the dropzone's own click handler doesn't re-fire fileInput.
+  document.getElementById('btnUpload').addEventListener('click', e => e.stopPropagation());
+  document.getElementById('btnCamera').addEventListener('click', e => e.stopPropagation());
   document.getElementById('btnReplace').addEventListener('click', () => { resetUpload(); fileInput.click(); });
   document.getElementById('btnTryAgain').addEventListener('click', () => { resetUpload(); showStage('stageEmpty'); });
   document.getElementById('btnRetry').addEventListener('click', () => showStage('stageUploaded'));
