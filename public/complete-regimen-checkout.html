@@ -916,6 +916,50 @@
 
     /* Utility */
     .hide { display: none !important; }
+
+    /* Fold-cover + narrow phone (<= 360px): existing breakpoints stop at 520px;
+       this layer covers the next step down for fold covers and small Android. */
+    @media (max-width: 360px) {
+      body { font-size: 15.5px; }
+      .container { padding: 0 16px; }
+
+      .nav { padding: 12px 16px; }
+      .nav-cta { font-size: 12.5px; padding: 9px 14px; }
+
+      h1 { font-size: clamp(28px, 8vw, 46px); letter-spacing: -0.02em; }
+      h2 { font-size: clamp(22px, 6.5vw, 36px); }
+
+      .shop-section, .checkout { padding: 56px 0; }
+      .shop-head, .checkout-head { margin-bottom: 36px; }
+
+      .card { padding: 18px 16px; }
+      .step { padding: 22px 18px; }
+      .field input, .field select, .field textarea { font-size: 16px; }
+
+      .checkout-cta { padding: 16px 18px; font-size: 14.5px; }
+
+      .mobile-cart-bar { padding: 10px 14px; gap: 8px; }
+      .mobile-cart-bar .total-stack .val { font-size: 18px; }
+      .mobile-cart-bar a, .mobile-cart-bar button { padding: 11px 14px; font-size: 13px; }
+
+      .tier-box { padding: 18px 16px; }
+      .tier-msg { font-size: 13px; }
+
+      .perks { gap: 8px; }
+      .perk { padding: 8px 12px; font-size: 12px; }
+
+      .trust-row { gap: 8px 14px; font-size: 12px; }
+
+      .ci { gap: 10px; padding: 10px 0; }
+      .ci-name { font-size: 13.5px; }
+      .totals { font-size: 13.5px; }
+    }
+
+    /* Touch / no-hover pointer */
+    @media (hover: none) {
+      .card:hover, .perk:hover, .pay-opt:hover { transform: none; box-shadow: none; }
+      .checkout-cta:hover { transform: none; }
+    }
   </style>
 </head>
 <body>

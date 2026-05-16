@@ -1749,6 +1749,83 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
+
+    /* Fold-cover + narrow phone (<= 360px): the existing min-width ladder
+       handles the climb up; this layer tightens the floor for fold covers
+       and narrow Android where buttons, sticky CTA, and the math/savings
+       block would otherwise overflow or feel cramped. */
+    @media (max-width: 360px) {
+      body { font-size: 15.5px; }
+      .wrap, .container { padding: 0 16px; }
+      .nav-inner { padding: 12px 16px; }
+
+      .hero-cta-row, .btn-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn, .btn-primary, .btn-secondary, .btn-ghost {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 18px;
+        font-size: 14px;
+      }
+      .btn-primary .price-strike { font-size: 12px; }
+
+      h1 { font-size: clamp(32px, 9vw, 50px); letter-spacing: -0.02em; }
+      h2 { font-size: clamp(24px, 6.5vw, 38px); }
+      .hero .sub { font-size: 16px; margin-top: 22px; }
+
+      section { padding: 56px 0; }
+
+      .hero-visual .product-stack { padding: 64px 18px 18px; gap: 8px; }
+
+      .step { padding: 26px 20px 22px; min-height: 280px; }
+      .step .step-image { margin: -26px -20px 18px; }
+      .step .step-no { font-size: 38px; margin-bottom: 22px; }
+      .step h3 { font-size: 20px; }
+
+      .math { gap: 18px; padding-top: 22px; }
+      .math .col span.v { font-size: clamp(28px, 8vw, 40px); }
+
+      .mech { padding: 22px 18px; min-height: 0; }
+      .mech h4 { font-size: 18px; }
+
+      .ai-stage-inner { padding: 22px 16px; }
+
+      .cs-card { padding: 18px; }
+      .cs-card .cs-image { margin: -18px -18px 4px; }
+      .cs-card .cs-name { font-size: 19px; }
+
+      .compare-table { font-size: 12.5px; }
+      .compare-table th, .compare-table td { padding: 12px 10px; }
+
+      .field-row { gap: 12px; }
+      .pay-options { gap: 8px; }
+
+      .wa-block { padding: 56px 0; }
+      .wa-cta { padding: 16px 22px; font-size: 14.5px; }
+
+      .faq summary { font-size: 18px; gap: 14px; }
+      .faq .answer { font-size: 15px; }
+
+      .final { padding: 80px 0 96px; }
+      .final h2 { font-size: clamp(36px, 11vw, 72px); }
+
+      .sticky-cta { padding: 10px 14px; gap: 10px; }
+      .sticky-cta .price-stack .val { font-size: 18px; }
+      .sticky-cta a.cta, .sticky-cta .cta { padding: 11px 14px; font-size: 13px; }
+
+      .trust-strip { gap: 6px 14px; font-size: 11.5px; }
+    }
+
+    /* Touch / no-hover pointer */
+    @media (hover: none) {
+      .btn:hover, .btn-primary:hover, .btn-secondary:hover { transform: none; }
+      .step:hover, .mech:hover { background: unset; }
+      .cs-card:hover { transform: none; box-shadow: none; }
+      .nav-cta:hover { color: var(--ink); border-color: var(--ink); }
+      .wa-cta:hover { transform: none; }
+    }
   </style>
 </head>
 
