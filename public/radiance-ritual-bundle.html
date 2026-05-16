@@ -1477,9 +1477,27 @@
       padding: 24px;
       display: flex; flex-direction: column; gap: 12px;
       transition: border-color .2s, transform .2s, box-shadow .2s;
+      overflow: hidden;
     }
     .cs-card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -20px rgba(14,31,58,0.18); }
     .cs-card.added { border-color: var(--cobalt); background: var(--sky); }
+    .cs-card .cs-image {
+      margin: -24px -24px 4px;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, var(--sky) 0%, var(--sky-2) 100%);
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-card .cs-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cs-card .cs-image.empty::after {
+      content: 'Photo pending';
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-faint);
+    }
     .cs-card .cs-num {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
@@ -2405,13 +2423,13 @@
     savingsPct: 49,
   };
   const PRODUCTS = {
-    prep:   { name: 'Radiance Prep Cleanser',       price: 2300, list: 2300 },
-    vitc:   { name: 'Vitamin CE Ferulic Serum',     price: 2350, list: 2350 },
-    light:  { name: 'Radiance Lightening Cream',    price: 2800, list: 2800 },
-    spf:    { name: 'Barrier Restore SPF 50+',      price: 2300, list: 2300 },
-    ha:     { name: 'Hyaluronic Acid Serum',        price: 2000, list: 2500 },
-    reti:   { name: 'Retinol Renewal Serum',        price: 2000, list: 2500 },
-    rescue: { name: 'Clarifying Rescue Face Wash',  price: 1799, list: 2000 },
+    prep:   { name: 'Radiance Prep Cleanser',       price: 2300, list: 2300, image: null },
+    vitc:   { name: 'Vitamin CE Ferulic Serum',     price: 2350, list: 2350, image: null },
+    light:  { name: 'Radiance Lightening Cream',    price: 2800, list: 2800, image: null },
+    spf:    { name: 'Barrier Restore SPF 50+',      price: 2300, list: 2300, image: null },
+    ha:     { name: 'Hyaluronic Acid Serum',        price: 2000, list: 2500, image: null },
+    reti:   { name: 'Retinol Renewal Serum',        price: 2000, list: 2500, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/Gemini_Generated_Image_rwcfs4rwcfs4rwcf.png?v=1773881855' },
+    rescue: { name: 'Clarifying Rescue Face Wash',  price: 1799, list: 2000, image: null },
   };
   const CROSS_SELLS = [
     { sku: 'ha',     why: 'Adds a triple-weight hyaluronic + B5 layer for plumper, dewier skin between actives.' },
@@ -2434,6 +2452,9 @@
       const added = crossSellCart[cs.sku];
       return `
         <article class="cs-card ${added ? 'added' : ''}" id="cs-${cs.sku}">
+          <div class="cs-image${p.image ? '' : ' empty'}">
+            ${p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy" />` : ''}
+          </div>
           <div class="cs-num">0${i+5}</div>
           <div class="cs-name">${p.name}</div>
           <p class="cs-why">${cs.why}</p>
