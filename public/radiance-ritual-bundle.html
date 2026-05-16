@@ -314,6 +314,7 @@
     }
     .hero-visual .lab-label {
       position: absolute; top: 24px; left: 24px;
+      z-index: 2;
       font-family: 'JetBrains Mono', monospace;
       font-size: 10.5px;
       letter-spacing: 0.16em;
@@ -331,40 +332,11 @@
       0%, 100% { box-shadow: 0 0 0 4px rgba(46,91,168,0.18); }
       50% { box-shadow: 0 0 0 9px rgba(46,91,168,0.04); }
     }
-    .hero-visual .product-stack {
+    .hero-visual .hero-product-photo {
       position: absolute; inset: 0;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      padding: 80px 28px 28px;
-    }
-    .hero-visual .product-stack .tile {
-      background: var(--white);
-      border: 1px solid var(--rule);
-      border-radius: 10px;
-      display: flex; align-items: end;
-      padding: 14px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-visual .product-stack .tile::before {
-      content: ''; position: absolute;
-      top: 24px; left: 50%; transform: translateX(-50%);
-      width: 38%; aspect-ratio: 1/3.2;
-      background: linear-gradient(180deg, var(--cobalt) 0%, var(--navy) 100%);
-      border-radius: 6px 6px 0 0;
-      opacity: 0.92;
-    }
-    .hero-visual .product-stack .tile::after {
-      content: 'CLARTÉ'; position: absolute;
-      top: 38%; left: 50%; transform: translateX(-50%);
-      font-family: 'Fraunces', serif; font-size: 9px; letter-spacing: 0.2em; color: var(--white); font-weight: 500;
-    }
-    .hero-visual .product-stack .tile span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9.5px; letter-spacing: 0.12em;
-      color: var(--ink-soft);
-      text-transform: uppercase;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     /* ============================================== HEADING ROW ============================================== */
@@ -1766,7 +1738,7 @@
 
       section { padding: 56px 0; }
 
-      .hero-visual .product-stack { padding: 64px 18px 18px; gap: 8px; }
+      .hero-visual .lab-label { top: 16px; left: 16px; font-size: 9.5px; }
 
       .step { padding: 26px 20px 22px; min-height: 280px; }
       .step .step-image { margin: -26px -20px 18px; }
@@ -1870,14 +1842,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
 
-        <div class="hero-visual reveal" aria-hidden="true">
+        <div class="hero-visual reveal">
           <span class="lab-label"><span class="pulse"></span> Bundle 01 · 4 products · AM / PM</span>
-          <div class="product-stack">
-            <div class="tile"><span>01 · Cleanse</span></div>
-            <div class="tile"><span>02 · Antioxidant</span></div>
-            <div class="tile"><span>03 · Lighten</span></div>
-            <div class="tile"><span>04 · Protect</span></div>
-          </div>
+          <img class="hero-product-photo" src="https://clartemd.com.pk/cdn/shop/files/2.jpg?v=1773936124&amp;width=823" alt="The Radiance Ritual — 4-product bundle flatlay" loading="eager" />
         </div>
       </div>
     </div>
@@ -2519,7 +2486,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     vitc:   { name: 'Vitamin CE Ferulic Serum',     price: 2350, list: 2350, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/3390b799-35fe-425b-bae9-41e4c8e41139.png?v=1773338016' },
     light:  { name: 'Radiance Lightening Cream',    price: 2800, list: 2800, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/Generated_Image_March_13_2026_-_3_37AM.png?v=1773743441' },
     spf:    { name: 'Barrier Restore SPF 50+',      price: 2300, list: 2300, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/91edf02b-ef9c-4062-a6b9-f0975d941393.png?v=1773337514' },
-    ha:     { name: 'Hyaluronic Acid Serum',        price: 2000, list: 2500, image: null },
+    ha:     { name: 'Hyaluronic Acid Serum',        price: 2000, list: 2500, image: 'https://clartemd.com.pk/cdn/shop/files/d9a4c8e3-fcbb-4411-b5a3-fb59422d0040.png' },
     reti:   { name: 'Retinol Renewal Serum',        price: 2000, list: 2500, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/Gemini_Generated_Image_rwcfs4rwcfs4rwcf.png?v=1773881855' },
     rescue: { name: 'Clarifying Rescue Face Wash',  price: 1799, list: 2000, image: 'https://cdn.shopify.com/s/files/1/0782/5113/1112/files/wash.png?v=1773743070' },
   };
